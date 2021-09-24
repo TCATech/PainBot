@@ -8,6 +8,11 @@ client.on("messageCreate", async (message) => {
   )
     return;
 
+  message.color =
+    message.guild.me.displayHexColor === "#000000"
+      ? "#ffffff"
+      : message.guild.me.displayHexColor;
+
   const [cmd, ...args] = message.content
     .slice(client.config.prefix.length)
     .trim()

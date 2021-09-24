@@ -1,8 +1,8 @@
-const { Message, Client } = require("discord.js");
+const { Message, Client, MessageEmbed } = require("discord.js");
+const ms = require("ms");
 
 module.exports = {
   name: "ping",
-  aliases: ["p"],
   /**
    *
    * @param {Client} client
@@ -10,6 +10,25 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    message.channel.send(`${client.ws.ping} ws ping`);
+    const res = await message.channel.send({
+      content: "Pinging...",
+    });
+
+    const ping = res.createdTimestamp - message.createdTimestamp;
+
+    const embed = new MessageEmbed()
+      .setTitle("Pong! 🏓")
+      .addField("Bot Latency", `${ping}ms`, true)
+      .addField("API Latency", `${client.ws.ping}ms`, true)
+      .addField("Uptime", ms(client.uptime), false)
+      .setFooter(
+        client.user.username,
+        client.user.displayAvatarURL({ dynamic: true })
+      )
+      .setColor(message.color)
+      .setTimestamp();
+    res.edit({
+      embeds: [embed],
+    });
   },
 };
