@@ -42,7 +42,7 @@ module.exports = {
       });
     } catch (err) {
       message.reply({
-        content: `❌ There was an error trying to kick that user!\n\```js ${err}``\``,
+        content: `❌ There was an error trying to kick that user!\n \`${err}\``,
       });
     }
   },
