@@ -63,6 +63,10 @@ module.exports = {
       message.reply({
         embeds: [embed],
       });
-    } catch (err) {}
+    } catch (err) {
+      message.reply({
+        content: `❌ There was an error trying to ban that user!\n \`${err}\``,
+      });
+    }
   },
 };
