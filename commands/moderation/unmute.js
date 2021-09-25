@@ -1,8 +1,8 @@
 const { Client, Message, MessageEmbed } = require("discord.js");
 
 module.exports = {
-  name: "mute",
-  description: "mutes a member from the server",
+  name: "unmute",
+  description: "unmutes a member from the server",
   /**
    *
    * @param {Client} client
@@ -16,22 +16,22 @@ module.exports = {
     const reason = args.slice(1).join(" ") || "No reason specified.";
     if (!member)
       return message.reply({
-        content: "❌ Please specify a member to mute.",
+        content: "❌ Please specify a member to unmute.",
       });
 
     if (member === message.member)
       return message.reply({
-        content: "❌ You are not allowed to mute yourself.",
+        content: "❌ You are not allowed to unmute yourself.",
       });
 
     if (member.roles.highest.position >= message.member.roles.highest.position)
       return message.reply({
         content:
-          "❌ You are not allowed to mute that member because they have an equal or higher role than you.",
+          "❌ You are not allowed to unmute that member because they have an equal or higher role than you.",
       });
     if (!member.manageable)
       return message.reply({
-        content: "❌ I am unable to mute that user.",
+        content: "❌ I am unable to unmute that member.",
       });
 
     const role = message.guild.roles.cache.find(
@@ -42,16 +42,16 @@ module.exports = {
         content:
           "❌ Seems like there is no mute role in this server. Please created a role called `Muted`.",
       });
-    if (member.roles.cache.has(role.id))
+    if (!member.roles.cache.has(role.id))
       return message.reply({
-        content: "❌ That member is already muted.",
+        content: "❌ That member is already unmuted.",
       });
 
     try {
-      await member.roles.add(role, reason);
+      await member.roles.remove(role, reason);
       const embed = new MessageEmbed()
-        .setTitle("*zips mouth*")
-        .setDescription(`I have successfully muted **${member.user.tag}**!`)
+        .setTitle("*unzips mouth*")
+        .setDescription(`I have successfully unmuted **${member.user.tag}**!`)
         .addField("Reason", reason)
         .setColor(message.color)
         .setFooter(
@@ -65,7 +65,7 @@ module.exports = {
       });
     } catch (err) {
       message.reply({
-        content: `❌ There was an error trying to mute that user!\n \`${err}\``,
+        content: `❌ There was an error trying to unmute that user!\n \`${err}\``,
       });
     }
   },
