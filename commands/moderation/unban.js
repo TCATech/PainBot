@@ -12,7 +12,7 @@ module.exports = {
   run: async (client, message, args) => {
     const userID = args[0];
 
-    message.guild.members.unban(userID).then((member) => {
+    message.guild.members.unban(userID).then((user) => {
       const embed = new MessageEmbed()
         .setTitle("Oh great he's screaming again.")
         .setDescription(
