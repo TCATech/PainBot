@@ -20,23 +20,23 @@ module.exports = {
       });
     if (member === message.member)
       return message.reply({
-        content: "❌ You are not allowed to kick yourself.",
+        content: "❌ You are not allowed to ban yourself.",
       });
     if (member.roles.highest.position >= message.member.roles.highest.position)
       return message.reply({
         content:
-          "❌ You are not allowed to kick that member because they have an equal or higher role than you.",
+          "❌ You are not allowed to ban that member because they have an equal or higher role than you.",
       });
     if (!member.kickable)
       return message.reply({
-        content: "❌ I am unable to kick that member.",
+        content: "❌ I am unable to ban that member.",
       });
     try {
-      member.kick(reason);
+      member.ban({ reason });
       const embed = new MessageEmbed()
         .setTitle("And there they go!")
         .setDescription(
-          `I have successfully kicked **${member.user.tag}** from the server!`
+          `I have successfully banned **${member.user.tag}** from the server!`
         )
         .addField("Reason", reason)
         .setColor(message.color)
