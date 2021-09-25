@@ -16,7 +16,7 @@ module.exports = {
     const reason = args.slice(1).join(" ") || "No reason specified.";
     if (!member)
       return message.reply({
-        content: "❌ Please specify a member to kick.",
+        content: "❌ Please specify a member to ban.",
       });
     if (member === message.member)
       return message.reply({
