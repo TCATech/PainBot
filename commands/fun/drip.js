@@ -16,6 +16,9 @@ module.exports = {
     const img = new MessageAttachment(res, "drip.png");
     message.reply({
       files: [img],
+      allowedMentions: {
+        repliedUser: false,
+      },
     });
   },
 };

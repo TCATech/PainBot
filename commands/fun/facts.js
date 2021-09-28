@@ -22,6 +22,9 @@ module.exports = {
 
     message.reply({
       files: [img],
+      allowedMentions: {
+        repliedUser: false,
+      },
     });
   },
 };
