@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 
 const globPromise = promisify(glob);
 
+const path = require("path");
+const fs = require("fs");
+
 /**
  * @param {Client} client
  */
@@ -26,7 +29,23 @@ module.exports = async (client) => {
   const eventFiles = await globPromise(`${process.cwd()}/events/*.js`);
   eventFiles.map((value) => require(value));
 
-  // mongoose
+  // Features
+  const readFeatures = (dir) => {
+    const files = fs.readdirSync(path.join(__dirname, dir));
+    for (const file of files) {
+      const stat = fs.lstatSync(path.join(__dirname, dir, file));
+      if (stat.isDirectory()) {
+        readFeatures(path.join(dir, file));
+      } else {
+        const feature = require(path.join(__dirname, dir, file));
+        feature(client);
+      }
+    }
+  };
+
+  readFeatures("../features/");
+
+  // MongoDB
   const { mongoURI } = require("../config.json");
   if (!mongoURI) return;
 
