@@ -22,7 +22,7 @@ module.exports = {
         }`,
         true
       )
-      .addField("Prefix", `\`${client.config.prefix}\``, true)
+      .addField("Prefix", `\`${message.prefix}\``, true)
       .addField(
         "Channels watching",
         client.channels.cache.size.toLocaleString(),
