@@ -35,5 +35,12 @@ client.on("messageCreate", async (message) => {
     client.commands.find((c) => c.aliases?.includes(cmd.toLowerCase()));
 
   if (!command) return;
-  await command.run(client, message, args);
+  
+  try {
+    await command.run(client, message, args);
+  } catch {
+    message.reply({
+      content: `❌ There was an error trying to do that command!\n \`${err}\``,
+    });
+  }
 });
