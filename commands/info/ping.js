@@ -10,7 +10,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const res = await message.channel.send({
+    const res = await message.reply({
       content: "Pinging...",
     });
 
