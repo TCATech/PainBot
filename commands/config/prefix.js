@@ -13,7 +13,7 @@ module.exports = {
     const data = await prefixModel.findOne({
       Guild: message.guild.id,
     });
-
+    if (!args[0]) return message.reply("Please specify the new prefix!");
     if (args[0].length > 5)
       return message.reply("Your new prefix must be under `5` characters!");
     if (data) {
