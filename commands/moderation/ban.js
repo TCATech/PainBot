@@ -29,7 +29,7 @@ module.exports = {
         content:
           "❌ You are not allowed to ban that member because they have an equal or higher role than you.",
       });
-    if (!member.kickable)
+    if (!member.bannable)
       return message.reply({
         content: "❌ I am unable to ban that member.",
       });
