@@ -78,12 +78,12 @@ client.on("messageCreate", async (message) => {
       )
       .setTimestamp();
 
-    if (command.userPerms && !message.member.hasPermission(command.userPerms))
+    if (command.userPerms && !message.member.permissions.has(command.userPerms))
       return message.reply({
         embeds: [userPermsEmbed],
       });
 
-    if (command.botPerms && !message.member.hasPermission(command.botPerms))
+    if (command.botPerms && !message.guild.me.permissions.has(command.botPerms))
       return message.reply({
         embeds: [botPermsEmbed],
       });
