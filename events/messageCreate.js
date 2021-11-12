@@ -38,55 +38,63 @@ client.on("messageCreate", async (message) => {
   if (!command) return;
 
   try {
-    const userPermsEmbed = new MessageEmbed()
-      .setTitle("Oopsie Poopsie!")
-      .setDescription(
-        `You need the following permissions to use this command: \`${command.userPerms
-          .map(
-            (value) =>
-              `${
-                value[0].toUpperCase() +
-                value.toLowerCase().slice(1).replace(/_/gi, " ")
-              }`
-          )
-          .join(", ")}\``
-      )
-      .setColor(message.color)
-      .setFooter(
-        client.user.username,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
-      .setTimestamp();
+    if (
+      command.userPerms &&
+      !message.member.permissions.has(command.userPerms)
+    ) {
+      const userPermsEmbed = new MessageEmbed()
+        .setTitle("Oopsie Poopsie!")
+        .setDescription(
+          `You need the following permissions to use this command: \`${command.userPerms
+            .map(
+              (value) =>
+                `${
+                  value[0].toUpperCase() +
+                  value.toLowerCase().slice(1).replace(/_/gi, " ")
+                }`
+            )
+            .join(", ")}\``
+        )
+        .setColor(message.color)
+        .setFooter(
+          client.user.username,
+          client.user.displayAvatarURL({ dynamic: true })
+        )
+        .setTimestamp();
 
-    const botPermsEmbed = new MessageEmbed()
-      .setTitle("Oopsie Poopsie!")
-      .setDescription(
-        `Please give me the following permissions: \`${command.botPerms
-          .map(
-            (value) =>
-              `${
-                value[0].toUpperCase() +
-                value.toLowerCase().slice(1).replace(/_/gi, " ")
-              }`
-          )
-          .join(", ")}\``
-      )
-      .setColor(message.color)
-      .setFooter(
-        client.user.username,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
-      .setTimestamp();
-
-    if (command.userPerms && !message.member.permissions.has(command.userPerms))
       return message.reply({
         embeds: [userPermsEmbed],
       });
+    }
 
-    if (command.botPerms && !message.guild.me.permissions.has(command.botPerms))
+    if (
+      command.botPerms &&
+      !message.guild.me.permissions.has(command.botPerms)
+    ) {
+      const botPermsEmbed = new MessageEmbed()
+        .setTitle("Oopsie Poopsie!")
+        .setDescription(
+          `Please give me the following permissions: \`${command.botPerms
+            .map(
+              (value) =>
+                `${
+                  value[0].toUpperCase() +
+                  value.toLowerCase().slice(1).replace(/_/gi, " ")
+                }`
+            )
+            .join(", ")}\``
+        )
+        .setColor(message.color)
+        .setFooter(
+          client.user.username,
+          client.user.displayAvatarURL({ dynamic: true })
+        )
+        .setTimestamp();
+
       return message.reply({
         embeds: [botPermsEmbed],
       });
+    }
 
     await command.run(client, message, args);
   } catch (err) {
