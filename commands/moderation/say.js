@@ -11,6 +11,9 @@ module.exports = {
   botPerms: ["SEND_MESSAGES"],
   run: async (client, message, args) => {
     message.delete();
+    if (!args[0]) {
+      return message.author.send("Please specify a message I can say!");
+    }
     message.channel.send(args[0]);
   },
 };

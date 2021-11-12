@@ -3,6 +3,8 @@ const client = require("../index");
 const prefixModel = require("../models/prefix");
 
 client.on("messageCreate", async (message) => {
+  if (message.author.bot || !message.guild) return;
+
   const data = await prefixModel.findOne({
     Guild: message.guild.id,
   });
@@ -17,12 +19,7 @@ client.on("messageCreate", async (message) => {
 
   message.prefix = prefix;
 
-  if (
-    message.author.bot ||
-    !message.guild ||
-    !message.content.toLowerCase().startsWith(prefix)
-  )
-    return;
+  if (!message.content.toLowerCase().startsWith(prefix)) return;
 
   message.color =
     message.guild.me.displayHexColor === "#000000"
