@@ -9,8 +9,8 @@ module.exports = {
    * @param {Message} message
    * @param {String[]} args
    */
-  userPerms: ['MANAGE_MESSAGES'],
-  botPerms: ['MANAGE_MESSAGES'],
+  userPerms: ["MANAGE_MESSAGES"],
+  botPerms: ["MANAGE_MESSAGES"],
   run: async (client, message, args) => {
     const messages = await message.channel.messages.fetch();
 

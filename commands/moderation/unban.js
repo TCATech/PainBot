@@ -9,8 +9,8 @@ module.exports = {
    * @param {Message} message
    * @param {String[]} args
    */
-  userPerms: ['BAN_MEMBERS'],
-  botPerms: ['BAN_MEMBERS'],
+  userPerms: ["BAN_MEMBERS"],
+  botPerms: ["BAN_MEMBERS"],
   run: async (client, message, args) => {
     const userID = args[0];
 
