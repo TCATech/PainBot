@@ -9,6 +9,8 @@ module.exports = {
    * @param {Message} message
    * @param {String[]} args
    */
+  userPerms: ["BAN_MEMBERS"],
+  botPerms: ["BAN_MEMBERS"],
   run: async (client, message, args) => {
     const member =
       message.mentions.members.first() ||
