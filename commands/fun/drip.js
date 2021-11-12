@@ -10,9 +10,9 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const member = message.mentions.members.first().user || message.author;
+    const member = message.mentions.members.first() || message.member;
 
-    const res = await pop.drip(member.displayAvatarURL({ format: "png" }));
+    const res = await pop.drip(member.user.displayAvatarURL({ format: "png" }));
     const img = new MessageAttachment(res, "drip.png");
     message.reply({
       files: [img],
