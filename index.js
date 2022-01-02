@@ -1,4 +1,5 @@
 const { Client, Collection } = require("discord.js");
+require("dotenv/config");
 const client = new Client({
   intents: 32767,
   restTimeOffset: 0,
@@ -11,4 +12,4 @@ client.events = new Collection();
 
 require("./handler")(client);
 
-client.login(client.config.token);
+client.login(process.env.TOKEN);

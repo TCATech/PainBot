@@ -46,7 +46,7 @@ module.exports = async (client) => {
   readFeatures("../features/");
 
   // MongoDB
-  const { mongoURI } = require("../config.json");
+  const mongoURI = process.env.mongoURI;
   if (!mongoURI) return;
 
   mongoose.connect(mongoURI).then(() => console.log("Connected to MongoDB"));
