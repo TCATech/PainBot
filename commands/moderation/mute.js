@@ -10,7 +10,7 @@ module.exports = {
    * @param {String[]} args
    */
   userPerms: ["MANAGE_MEMBERS"],
-  botPerms: ["MANAGE_ROLES"],
+  botPerms: ["MANAGE_MEMBERS", "MANAGE_ROLES"],
   run: async (client, message, args) => {
     const member =
       message.mentions.members.first() ||
@@ -49,26 +49,20 @@ module.exports = {
         content: "❌ That member is already muted.",
       });
 
-    try {
-      await member.roles.add(role, reason);
-      const embed = new MessageEmbed()
-        .setTitle("*zips mouth*")
-        .setDescription(`I have successfully muted **${member.user.tag}**!`)
-        .addField("Reason", reason)
-        .setColor(message.color)
-        .setFooter(
-          client.user.username,
-          client.user.displayAvatarURL({ dynamic: true })
-        )
-        .setTimestamp();
+    await member.roles.add(role, reason);
+    const embed = new MessageEmbed()
+      .setTitle("*zips mouth*")
+      .setDescription(`I have successfully muted **${member.user.tag}**!`)
+      .addField("Reason", reason)
+      .setColor(message.color)
+      .setFooter(
+        client.user.username,
+        client.user.displayAvatarURL({ dynamic: true })
+      )
+      .setTimestamp();
 
-      message.reply({
-        embeds: [embed],
-      });
-    } catch (err) {
-      message.reply({
-        content: `❌ There was an error trying to mute that user!\n \`${err}\``,
-      });
-    }
+    message.reply({
+      embeds: [embed],
+    });
   },
 };
