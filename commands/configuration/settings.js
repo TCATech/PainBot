@@ -3,7 +3,7 @@ const changeSettings = require("../../utils/changeSettings");
 
 module.exports = {
   name: "settings",
-  description: "Change some settings about the bot.",
+  description: "Change any setting about the bot.",
   userPerms: ["MANAGE_SERVER"],
   /**
    *
