@@ -2,7 +2,7 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "unmute",
-  description: "unmutes a member from the server",
+  description: "Unmutes a member from the server.",
   /**
    *
    * @param {Client} client
@@ -49,26 +49,20 @@ module.exports = {
         content: "❌ That member is already unmuted.",
       });
 
-    try {
-      await member.roles.remove(role, reason);
-      const embed = new MessageEmbed()
-        .setTitle("*unzips mouth*")
-        .setDescription(`I have successfully unmuted **${member.user.tag}**!`)
-        .addField("Reason", reason)
-        .setColor(message.color)
-        .setFooter(
-          client.user.username,
-          client.user.displayAvatarURL({ dynamic: true })
-        )
-        .setTimestamp();
+    await member.roles.remove(role, reason);
+    const embed = new MessageEmbed()
+      .setTitle("*unzips mouth*")
+      .setDescription(`I have successfully unmuted **${member.user.tag}**!`)
+      .addField("Reason", reason)
+      .setColor(message.color)
+      .setFooter(
+        client.user.username,
+        client.user.displayAvatarURL({ dynamic: true })
+      )
+      .setTimestamp();
 
-      message.reply({
-        embeds: [embed],
-      });
-    } catch (err) {
-      message.reply({
-        content: `❌ There was an error trying to unmute that user!\n \`${err}\``,
-      });
-    }
+    message.reply({
+      embeds: [embed],
+    });
   },
 };

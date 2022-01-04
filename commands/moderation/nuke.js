@@ -3,7 +3,8 @@ const ms = require("ms");
 
 module.exports = {
   name: "nuke",
-  description: "Nukes an entire channel and deletes all of it's messages.",
+  description:
+    "Nukes an entire channel, deleting all of the messages sent in it.",
   /**
    * @param {Client} client
    * @param {Message} message

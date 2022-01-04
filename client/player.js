@@ -13,13 +13,13 @@ const player = new Player(client, {
   autoSelfDeaf: true,
 });
 
-player.on("error", (queue, error) => {
+player.on("error", (queue, err) => {
   queue.metadata.send({
     content: `❌ Whoops, an error occured!\n \`${err}\``,
   });
 });
 
-player.on("connectionError", (queue, error) => {
+player.on("connectionError", (queue, err) => {
   queue.metadata.send({
     content: `❌ There was an error trying to connect to your voice channel!\n \`${err}\``,
   });
@@ -46,7 +46,8 @@ player.on("trackStart", (queue, track) => {
         .setFooter({
           text: client.user.username,
           iconURL: client.user.displayAvatarURL({ dynamic: true }),
-        }),
+        })
+        .setTimestamp(),
     ],
     components: [row],
   });

@@ -4,7 +4,8 @@ const player = require("../../client/player");
 
 module.exports = {
   name: "play",
-  description: "Plays a cool song in your VC.",
+  description: "Plays a cool song in your voice channelC.",
+  botPerms: ["CONNECT"],
   /**
    *
    * @param {Client} client

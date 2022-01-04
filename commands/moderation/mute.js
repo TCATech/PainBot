@@ -2,7 +2,7 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "mute",
-  description: "mutes a member from the server",
+  description: "Mutes a member from the server.",
   /**
    *
    * @param {Client} client

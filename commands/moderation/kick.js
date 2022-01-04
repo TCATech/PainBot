@@ -2,7 +2,7 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "kick",
-  description: "kicks a member from the server.",
+  description: "Kicks a member from the server.",
   /**
    *
    * @param {Client} client
@@ -33,28 +33,22 @@ module.exports = {
       return message.reply({
         content: "❌ I am unable to kick that member.",
       });
-    try {
-      member.kick(reason);
-      const embed = new MessageEmbed()
-        .setTitle("And there they go!")
-        .setDescription(
-          `I have successfully kicked **${member.user.tag}** from the server!`
-        )
-        .addField("Reason", reason)
-        .setColor(message.color)
-        .setFooter(
-          client.user.username,
-          client.user.displayAvatarURL({ dynamic: true })
-        )
-        .setTimestamp();
+    member.kick(reason);
+    const embed = new MessageEmbed()
+      .setTitle("And there they go!")
+      .setDescription(
+        `I have successfully kicked **${member.user.tag}** from the server!`
+      )
+      .addField("Reason", reason)
+      .setColor(message.color)
+      .setFooter(
+        client.user.username,
+        client.user.displayAvatarURL({ dynamic: true })
+      )
+      .setTimestamp();
 
-      message.reply({
-        embeds: [embed],
-      });
-    } catch (err) {
-      message.reply({
-        content: `❌ There was an error trying to kick that user!\n \`${err}\``,
-      });
-    }
+    message.reply({
+      embeds: [embed],
+    });
   },
 };

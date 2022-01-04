@@ -3,7 +3,7 @@ const ms = require("ms");
 
 module.exports = {
   name: "purge",
-  description: "deletes a specific amount of messages",
+  description: "Deletes a specific amount of messages from the channel.",
   /**
    * @param {Client} client
    * @param {Message} message
