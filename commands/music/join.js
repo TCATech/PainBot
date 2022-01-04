@@ -1,8 +1,10 @@
 const { Client, Message } = require("discord.js");
+const { joinVoiceChannel } = require("@discordjs/voice");
 
 module.exports = {
   name: "join",
   description: "Makes PainBot join the voice channel you are currently in.",
+  aliases: ["summon", "enter"],
   /**
    * @param {Client} client
    * @param {Message} message
@@ -17,8 +19,10 @@ module.exports = {
       });
     }
 
-    await vc.join().then((connection) => {
-      connection.voice.setSelfDeaf(true);
+    joinVoiceChannel({
+      channelId: vc.id,
+      guildId: message.guild.id,
+      adapterCreator: message.guild.voiceAdapterCreator,
     });
     message.react("👋");
   },
