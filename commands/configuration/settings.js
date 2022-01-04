@@ -24,7 +24,7 @@ module.exports = {
             .addField(`\u200B`, "__**General**__")
             .addField("Prefix", `prefix`)
             .addField(`\u200B`, "__**Moderation**__")
-            .addField("Mute role", "muterole <@role or role ID>")
+            .addField("Mute role", "Coming soon!")
             .addField("Audit logs channel", "Coming soon!")
             .setColor(message.color)
             .setFooter({

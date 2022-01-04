@@ -21,10 +21,7 @@ client.on("messageCreate", async (message) => {
 
   if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-  message.color =
-    message.guild.me.displayHexColor === "#000000"
-      ? "#ffffff"
-      : message.guild.me.displayHexColor;
+  message.color = "#FFFB00";
 
   const [cmd, ...args] = message.content.slice(prefix.length).trim().split(" ");
 
