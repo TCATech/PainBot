@@ -50,10 +50,10 @@ client.on("messageCreate", async (message) => {
             .join(", ")}\``
         )
         .setColor(message.color)
-        .setFooter(
-          client.user.username,
-          client.user.displayAvatarURL({ dynamic: true })
-        )
+        .setFooter({
+          text: client.user.username,
+          iconURL: client.user.displayAvatarURL({ dynamic: true }),
+        })
         .setTimestamp();
 
       return message.reply({
@@ -79,10 +79,10 @@ client.on("messageCreate", async (message) => {
             .join(", ")}\``
         )
         .setColor(message.color)
-        .setFooter(
-          client.user.username,
-          client.user.displayAvatarURL({ dynamic: true })
-        )
+        .setFooter({
+          text: client.user.username,
+          iconURL: client.user.displayAvatarURL({ dynamic: true }),
+        })
         .setTimestamp();
 
       return message.reply({

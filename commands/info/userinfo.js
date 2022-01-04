@@ -101,10 +101,10 @@ module.exports = {
         true
       )
       .setColor(message.color)
-      .setFooter(
-        client.user.username,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
+      .setFooter({
+        text: client.user.username,
+        iconURL: client.user.displayAvatarURL({ dynamic: true }),
+      })
       .setTimestamp();
     if (userFlags.length > 0)
       embed.addField("Badges", userFlags.map((flag) => flags[flag]).join("\n"));

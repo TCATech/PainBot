@@ -22,10 +22,10 @@ module.exports = {
             `I have successfully unbanned **${user.tag}** from the server!`
           )
           .setColor(message.color)
-          .setFooter(
-            client.user.username,
-            client.user.displayAvatarURL({ dynamic: true })
-          )
+          .setFooter({
+            text: client.user.username,
+            iconURL: client.user.displayAvatarURL({ dynamic: true }),
+          })
           .setTimestamp();
 
         message.reply({

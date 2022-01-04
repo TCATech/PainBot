@@ -21,10 +21,10 @@ module.exports = {
       .addField("Bot Latency", `${ping}ms`, true)
       .addField("API Latency", `${client.ws.ping}ms`, true)
       .addField("Uptime", ms(client.uptime), false)
-      .setFooter(
-        client.user.username,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
+      .setFooter({
+        text: client.user.username,
+        iconURL: client.user.displayAvatarURL({ dynamic: true }),
+      })
       .setColor(message.color)
       .setTimestamp();
     res.edit({

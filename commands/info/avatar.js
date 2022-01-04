@@ -20,10 +20,10 @@ module.exports = {
       .setTitle("Avatar")
       .setColor(message.color)
       .setImage(member.user.displayAvatarURL({ dynamic: true, size: 256 }))
-      .setFooter(
-        client.user.username,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
+      .setFooter({
+        text: client.user.username,
+        iconURL: client.user.displayAvatarURL({ dynamic: true }),
+      })
       .setTimestamp();
 
     message.reply({

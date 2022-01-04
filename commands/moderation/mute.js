@@ -55,10 +55,10 @@ module.exports = {
       .setDescription(`I have successfully muted **${member.user.tag}**!`)
       .addField("Reason", reason)
       .setColor(message.color)
-      .setFooter(
-        client.user.username,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
+      .setFooter({
+        text: client.user.username,
+        iconURL: client.user.displayAvatarURL({ dynamic: true }),
+      })
       .setTimestamp();
 
     message.reply({

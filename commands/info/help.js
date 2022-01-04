@@ -46,10 +46,10 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTitle("Please choose a category using the dropdown menu below.")
       .setColor(message.color)
-      .setFooter(
-        client.user.username,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
+      .setFooter({
+        text: client.user.username,
+        iconURL: client.user.displayAvatarURL({ dynamic: true }),
+      })
       .setTimestamp();
 
     /**
@@ -109,10 +109,10 @@ module.exports = {
           })
         )
         .setColor(message.color)
-        .setFooter(
-          client.user.username,
-          client.user.displayAvatarURL({ dynamic: true })
-        )
+        .setFooter({
+          text: client.user.username,
+          iconURL: client.user.displayAvatarURL({ dynamic: true }),
+        })
         .setTimestamp();
 
       int.update({ embeds: [categoryEmbed] });

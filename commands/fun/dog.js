@@ -13,10 +13,10 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTitle("🐶 Woof! 🐶")
       .setImage(await animals.dog())
-      .setFooter(
-        client.user.username,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
+      .setFooter({
+        text: client.user.username,
+        iconURL: client.user.displayAvatarURL({ dynamic: true }),
+      })
       .setColor(message.color)
       .setTimestamp();
 

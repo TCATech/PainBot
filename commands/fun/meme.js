@@ -22,9 +22,9 @@ module.exports = {
             .setURL(`${memeUrl}`)
             .setImage(memeImage)
             .setColor(message.color)
-            .setFooter(
-              `👍 ${memeUpvotes} | 👎 ${memeDownvotes} | 💬 ${memeNumComments}`
-            )
+            .setFooter({
+              text: `👍 ${memeUpvotes} | 👎 ${memeDownvotes} | 💬 ${memeNumComments}`,
+            })
             .setTimestamp();
 
           msg.edit({
