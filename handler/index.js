@@ -25,31 +25,6 @@ module.exports = async (client) => {
     }
   });
 
-  // Slash Commands
-  const slashCommands = await globPromise(
-    `${process.cwd()}/SlashCommands/*/*.js`
-  );
-
-  const arrayOfSlashCommands = [];
-  slashCommands.map((value) => {
-    const file = require(value);
-    if (!file?.name) return;
-    client.slashCommands.set(file.name, file);
-
-    if (["MESSAGE", "USER"].includes(file.type)) delete file.description;
-    arrayOfSlashCommands.push(file);
-  });
-
-  client.on("ready", async () => {
-    if (process.env.TEST === true) {
-      await client.guilds.cache
-        .get(process.env.testGuildID)
-        .commands.set(arrayOfSlashCommands);
-    } else {
-      await client.application.commands.set(arrayOfSlashCommands);
-    }
-  });
-
   // Events
   const eventFiles = await globPromise(`${process.cwd()}/events/*.js`);
   eventFiles.map((value) => require(value));
