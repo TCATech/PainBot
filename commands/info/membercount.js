@@ -17,7 +17,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTitle("Members")
       .setDescription(memberCount.toString())
-      .setColor(client.color)
+      .setColor(message.color)
       .setFooter({
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
