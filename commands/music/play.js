@@ -56,6 +56,14 @@ module.exports = {
 
     if (!queue.connection) await queue.connect(message.member.voice.channel);
 
+    message.reply({
+      embeds: [
+        new MessageEmbed()
+          .setDescription(`✅ | Enqueued [${track.title}](${track.url})`)
+          .setColor("#FFFB00"),
+      ],
+    });
+
     searchResult.playlist
       ? queue.addTracks(searchResult.tracks)
       : queue.addTrack(searchResult.tracks[0]);

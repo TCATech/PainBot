@@ -14,6 +14,6 @@ module.exports = {
     if (!args[0]) {
       return message.author.send("Please specify a message I can say!");
     }
-    message.channel.send(args[0]);
+    message.channel.send(args.join(' '));
   },
 };

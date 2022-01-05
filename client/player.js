@@ -144,16 +144,6 @@ player.on("trackStart", (queue, track) => {
   });
 });
 
-player.on("trackAdd", (queue, track) => {
-  queue.metadata.send({
-    embeds: [
-      new MessageEmbed()
-        .setDescription(`✅ | Enqueued [${track.title}](${track.url})`)
-        .setColor("#FFFB00"),
-    ],
-  });
-});
-
 player.on("botDisconnect", (queue) => {
   queue.metadata.send({
     embeds: [
