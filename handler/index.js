@@ -38,8 +38,10 @@ module.exports = async (client) => {
     const guildID = "859659416898109450";
     const guild = client.guilds.cache.get(guildID);
     if (guild) {
+      console.log("Registering guild slash commands");
       await guild.commands.set(arrayOfSlashCommands);
     } else {
+      console.log("Registering global slash commands");
       await client.application.commands.set(arrayOfSlashCommands);
     }
   });
