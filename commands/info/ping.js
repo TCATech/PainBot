@@ -28,7 +28,7 @@ module.exports = {
       .setColor(message.color)
       .setTimestamp();
     res.edit({
-      content: "** **",
+      content: "\u200B",
       embeds: [embed],
     });
   },

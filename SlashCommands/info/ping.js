@@ -32,7 +32,7 @@ module.exports = {
       .setColor(interaction.color)
       .setTimestamp();
     interaction.editReply({
-      content: "** **",
+      content: "\u200B",
       embeds: [embed],
     });
   },
