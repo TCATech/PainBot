@@ -16,12 +16,12 @@ module.exports = {
 
     const embed = new MessageEmbed()
       .setTitle("Members")
-      .setDescription(memberCount)
+      .setDescription(memberCount.toString())
       .setColor(client.color)
-      .setFooter(
-        client.user.username,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
+      .setFooter({
+        text: client.user.username,
+        iconURL: client.user.displayAvatarURL({ dynamic: true }),
+      })
       .setTimestamp();
     message.channel.send(embed);
   },
