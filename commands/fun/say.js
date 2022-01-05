@@ -8,12 +8,13 @@ module.exports = {
    * @param {Message} message
    * @param {String[]} args
    */
+  userPerms: ["MANAGE_MESSAGES"],
   botPerms: ["SEND_MESSAGES"],
   run: async (client, message, args) => {
     message.delete();
     if (!args[0]) {
       return message.author.send("Please specify a message I can say!");
     }
-    message.channel.send(args.join(' '));
+    message.channel.send(args.join(" "));
   },
 };
