@@ -5,9 +5,6 @@ const mongoose = require("mongoose");
 
 const globPromise = promisify(glob);
 
-const path = require("path");
-const fs = require("fs");
-
 /**
  * @param {Client} client
  */
@@ -22,6 +19,28 @@ module.exports = async (client) => {
     if (file.name) {
       const properties = { directory, ...file };
       client.commands.set(file.name, properties);
+    }
+  });
+
+  // Slash Commands
+  const slashCommands = await globPromise(
+    `${process.cwd()}/SlashCommands/*/*.js`
+  );
+
+  const arrayOfSlashCommands = [];
+  slashCommands.map((value) => {
+    const file = require(value);
+    if (!file?.name) return;
+    client.slashCommands.set(file.name, file);
+    arrayOfSlashCommands.push(file);
+  });
+  client.on("ready", async () => {
+    const guildID = "859659416898109450";
+    const guild = client.guilds.cache.get(guildID);
+    if (guild) {
+      await guild.commands.set(arrayOfSlashCommands);
+    } else {
+      await client.application.commands.set(arrayOfSlashCommands);
     }
   });
 
