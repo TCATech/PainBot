@@ -41,7 +41,7 @@ module.exports = async (client) => {
   });
 
   client.on("ready", async () => {
-    if (process.env.TEST === "true") {
+    if (process.env.TEST === true) {
       await client.guilds.cache
         .get(process.env.testGuildID)
         .commands.set(arrayOfSlashCommands);
