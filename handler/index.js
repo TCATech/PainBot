@@ -41,15 +41,12 @@ module.exports = async (client) => {
   });
 
   client.on("ready", async () => {
-    if (client.user.username === "PainBot") {
-      await client.application.commands.set(arrayOfSlashCommands);
-    } else if (
-      client.user.username.toLowerCase().includes("test") ||
-      client.user.username !== "PainBot"
-    ) {
+    if (process.env.TEST === "true") {
       await client.guilds.cache
         .get(process.env.testGuildID)
         .commands.set(arrayOfSlashCommands);
+    } else {
+      await client.application.commands.set(arrayOfSlashCommands);
     }
   });
 
