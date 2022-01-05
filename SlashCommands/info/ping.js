@@ -9,8 +9,9 @@ module.exports = {
    *
    * @param {Client} client
    * @param {Interaction} interaction
+   * @param {String[]} args
    */
-  run: async (client, interaction) => {
+  run: async (client, interaction, args) => {
     const res = await interaction.reply({
       content: "Pinging...",
       ephemeral: true,
