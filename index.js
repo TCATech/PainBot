@@ -9,6 +9,7 @@ module.exports = client;
 client.config = require("./config");
 client.commands = new Collection();
 client.events = new Collection();
+client.slashCommands = new Collection();
 
 require("./handler")(client);
 

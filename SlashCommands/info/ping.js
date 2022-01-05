@@ -1,20 +1,24 @@
-const { Message, Client, MessageEmbed } = require("discord.js");
+const { Interaction, Client, MessageEmbed } = require("discord.js");
 const ms = require("ms");
 
 module.exports = {
   name: "ping",
+  description:
+    "Pong! Tells you the amount of ping/latency PainBot currently has.",
   /**
    *
    * @param {Client} client
-   * @param {Message} message
+   * @param {Interaction} interaction
    * @param {String[]} args
    */
-  run: async (client, message, args) => {
-    const res = await message.reply({
+  run: async (client, interaction, args) => {
+    const res = await interaction.reply({
       content: "Pinging...",
+      ephemeral: true,
+      fetchReply: true,
     });
 
-    const ping = res.createdTimestamp - message.createdTimestamp;
+    const ping = res.createdTimestamp - interaction.createdTimestamp;
 
     const embed = new MessageEmbed()
       .setTitle("Pong! 🏓")
@@ -25,9 +29,9 @@ module.exports = {
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
       })
-      .setColor(message.color)
+      .setColor(interaction.color)
       .setTimestamp();
-    res.edit({
+    interaction.editReply({
       content: "** **",
       embeds: [embed],
     });
