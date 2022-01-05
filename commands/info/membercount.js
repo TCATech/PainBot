@@ -23,6 +23,8 @@ module.exports = {
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
       })
       .setTimestamp();
-    message.channel.send(embed);
+    message.channel.send({
+      embeds: [embed],
+    });
   },
 };
