@@ -8,14 +8,14 @@ module.exports = {
    * @param {Client} client
    * @param {Interaction} interaction
    */
-  run: async (client, message) => {
-    let { guild } = message;
+  run: async (client, interaction) => {
+    let { guild } = interaction;
     let memberCount = guild.memberCount;
 
     const embed = new MessageEmbed()
       .setTitle("Members")
       .setDescription(memberCount.toString())
-      .setColor(message.color)
+      .setColor(interaction.color)
       .setFooter({
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
