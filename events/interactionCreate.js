@@ -27,7 +27,7 @@ client.on("interactionCreate", async (interaction) => {
 
     try {
       if (
-        command.userPerms &&
+        cmd.userPerms &&
         !interaction.member.permissions.has(command.userPerms)
       ) {
         const userPermsEmbed = new MessageEmbed()
