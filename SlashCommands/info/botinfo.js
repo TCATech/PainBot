@@ -1,4 +1,4 @@
-const { Client, Message, MessageEmbed } = require("discord.js");
+const { Client, Interaction, MessageEmbed } = require("discord.js");
 const moment = require("moment");
 
 module.exports = {
@@ -7,9 +7,9 @@ module.exports = {
   /**
    *
    * @param {Client} client
-   * @param {Message} message
+   * @param {Interaction} interaction
    */
-  run: async (client, message) => {
+  run: async (client, interaction) => {
     const embed = new MessageEmbed()
       .setAuthor(
         client.user.tag,
@@ -22,7 +22,7 @@ module.exports = {
         }`,
         true
       )
-      .addField("Prefix", `\`${message.prefix}\``, true)
+      .addField("Prefix", `\`/\``, true)
       .addField(
         "Channels watching",
         client.channels.cache.size.toLocaleString(),
@@ -46,10 +46,11 @@ module.exports = {
         "Links",
         "[Invite](https://painbot.tk/invite) | [Vote](https://top.gg/bot/849960798809358367/vote)"
       )
-      .setColor(message.color);
+      .setColor(interaction.color);
 
-    message.reply({
+    interaction.reply({
       embeds: [embed],
+      ephemeral: true,
     });
   },
 };
