@@ -1,16 +1,14 @@
-const { Client, Message, MessageEmbed } = require("discord.js");
+const { Client, Interaction, MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "membercount",
-  aliases: ["members"],
   description: "Tells you the amount of members that are in your server.",
   /**
    *
    * @param {Client} client
-   * @param {Message} message
-   * @param {String[]} args
+   * @param {Interaction} interaction
    */
-  run: async (client, message, args) => {
+  run: async (client, message) => {
     let { guild } = message;
     let memberCount = guild.memberCount;
 
@@ -23,8 +21,9 @@ module.exports = {
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
       })
       .setTimestamp();
-    message.reply({
+    interaction.reply({
       embeds: [embed],
+      ephemeral: true,
     });
   },
 };
