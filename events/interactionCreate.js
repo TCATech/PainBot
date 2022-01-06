@@ -19,9 +19,9 @@ client.on("interactionCreate", async (interaction) => {
         });
       } else if (option.value) args.push(option.value);
     }
-    // interaction.member = interaction.guild.members.cache.get(
-    //   interaction.user.id
-    // );
+    interaction.member = interaction.guild.members.cache.get(
+      interaction.user.id
+    );
 
     interaction.color = "#FFFB00";
 
