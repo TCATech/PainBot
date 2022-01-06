@@ -19,13 +19,71 @@ client.on("interactionCreate", async (interaction) => {
         });
       } else if (option.value) args.push(option.value);
     }
-    interaction.member = interaction.guild.members.cache.get(
-      interaction.user.id
-    );
+    // interaction.member = interaction.guild.members.cache.get(
+    //   interaction.user.id
+    // );
 
     interaction.color = "#FFFB00";
 
     try {
+      if (
+        command.userPerms &&
+        !interaction.member.permissions.has(command.userPerms)
+      ) {
+        const userPermsEmbed = new MessageEmbed()
+          .setTitle("Oopsie Poopsie!")
+          .setDescription(
+            `You need the following permissions to use this command: \`${command.userPerms
+              .map(
+                (value) =>
+                  `${
+                    value[0].toUpperCase() +
+                    value.toLowerCase().slice(1).replace(/_/gi, " ")
+                  }`
+              )
+              .join(", ")}\``
+          )
+          .setColor(message.color)
+          .setFooter({
+            text: client.user.username,
+            iconURL: client.user.displayAvatarURL({ dynamic: true }),
+          })
+          .setTimestamp();
+
+        return message.reply({
+          embeds: [userPermsEmbed],
+        });
+      }
+
+      if (
+        cmd.botPerms &&
+        !interaction.guild.me.permissions.has(command.botPerms)
+      ) {
+        const botPermsEmbed = new MessageEmbed()
+          .setTitle("Oopsie Poopsie!")
+          .setDescription(
+            `Please give me the following permissions: \`${command.botPerms
+              .map(
+                (value) =>
+                  `${
+                    value[0].toUpperCase() +
+                    value.toLowerCase().slice(1).replace(/_/gi, " ")
+                  }`
+              )
+              .join(", ")}\``
+          )
+          .setColor(message.color)
+          .setFooter({
+            text: client.user.username,
+            iconURL: client.user.displayAvatarURL({ dynamic: true }),
+          })
+          .setTimestamp();
+
+        return message.reply({
+          embeds: [botPermsEmbed],
+        });
+      }
+
       cmd.run(client, interaction, args);
     } catch (err) {
       interaction.reply({
