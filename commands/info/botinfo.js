@@ -22,19 +22,20 @@ module.exports = {
         client.user.displayAvatarURL({ dynamic: true })
       )
       .addField(
-        "Used in",
+        "Servers watching",
         `${client.guilds.cache.size.toLocaleString()} server${
           client.guilds.cache.size > 1 ? "s" : ""
         }`,
         true
       )
-      .addField("Prefix", `\`${message.prefix}\``, true)
       .addField(
         "Channels watching",
         client.channels.cache.size.toLocaleString(),
         true
       )
-      .addField("API Ping", `${client.ws.ping.toString()}ms`, true)
+      .addField("Users watching", client.users.cache.size.toString(), true)
+      .addField("Commands", client.commands.size.toLocaleString(), true)
+      .addField("Prefix", `\`${message.prefix}\``, true)
       .addField(
         "Made with",
         `[discord.js](https://github.com/discordjs/discord.js)`,
@@ -46,7 +47,6 @@ module.exports = {
         moment(client.user.createdAt).format("MMMM D, YYYY"),
         true
       )
-      .addField("Commands", client.commands.size.toLocaleString(), true)
       .addField("Developer", "Not TCA#3060", true)
       .setColor(message.color);
 
