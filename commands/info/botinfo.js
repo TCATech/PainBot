@@ -1,4 +1,10 @@
-const { Client, Message, MessageEmbed } = require("discord.js");
+const {
+  Client,
+  Message,
+  MessageActionRow,
+  MessageButton,
+  MessageEmbed,
+} = require("discord.js");
 const moment = require("moment");
 
 module.exports = {
@@ -42,14 +48,22 @@ module.exports = {
       )
       .addField("Commands", client.commands.size.toLocaleString(), true)
       .addField("Developer", "Not TCA#3060", true)
-      .addField(
-        "Links",
-        "[Invite](https://painbot.tk/invite) | [Vote](https://top.gg/bot/849960798809358367/vote)"
-      )
       .setColor(message.color);
 
     message.reply({
       embeds: [embed],
+      components: [
+        new MessageActionRow().addComponents(
+          new MessageButton()
+            .setStyle("LINK")
+            .setLabel("Invite")
+            .setURL("https://painbot.tk/invite"),
+          new MessageButton()
+            .setStyle("LINK")
+            .setLabel("Vote")
+            .setURL("https://painbot.tk/vote")
+        ),
+      ],
     });
   },
 };
