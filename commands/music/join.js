@@ -23,6 +23,7 @@ module.exports = {
       channelId: vc.id,
       guildId: message.guild.id,
       adapterCreator: message.guild.voiceAdapterCreator,
+      selfDeaf: true,
     });
     message.react("👋");
   },

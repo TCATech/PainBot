@@ -144,6 +144,16 @@ player.on("trackStart", (queue, track) => {
   });
 });
 
+player.on("trackAdd", (queue, track) => {
+  message.reply({
+    embeds: [
+      new MessageEmbed()
+        .setDescription(`✅ | Enqueued [${track.title}](${track.url})`)
+        .setColor(message.color),
+    ],
+  });
+});
+
 player.on("botDisconnect", (queue) => {
   queue.metadata.send({
     embeds: [
