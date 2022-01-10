@@ -10,9 +10,13 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
+    if (!message.mentions.users.first())
+      return message.reply({
+        content: "❌ Please mention an opponent!",
+      });
     await RockPaperScissors({
       message: message,
-      opponent: member,
+      opponent: message.mentions.users.first(),
       gameID: message.author.id,
       embed: {
         title: "Rock Paper Scissors",
