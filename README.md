@@ -1,5 +1,3 @@
-# PainBot v2
+# PainBot v3
 
-The funniest moderation and games bot you will ever need.
-
-*Adding more information here soon.*
+The newest version of PainBot, which is currently being worked on.
