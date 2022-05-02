@@ -37,7 +37,7 @@ client.on("messageCreate", async (message) => {
       !message.member.permissions.has(command.userPerms)
     ) {
       const userPermsEmbed = new MessageEmbed()
-        .setTitle("Oopsie Poopsie!")
+        .setTitle("Uh oh!")
         .setDescription(
           `You need the following permissions to use this command: \`${command.userPerms
             .map(
@@ -66,7 +66,7 @@ client.on("messageCreate", async (message) => {
       !message.guild.me.permissions.has(command.botPerms)
     ) {
       const botPermsEmbed = new MessageEmbed()
-        .setTitle("Oopsie Poopsie!")
+        .setTitle("Uh oh!")
         .setDescription(
           `Please give me the following permissions: \`${command.botPerms
             .map(
@@ -93,7 +93,16 @@ client.on("messageCreate", async (message) => {
     await command.run(client, message, args);
   } catch (err) {
     message.reply({
-      content: `❌ There was an error trying to do that command!\n \`${err}\``,
+      embeds: [
+        new MessageEmbed()
+          .setTitle("Uh oh!")
+          .setDescription("An error has occured.")
+          .addField("Error", err.toString())
+          .setFooter({
+            text: client.user.username,
+            iconURL: client.user.displayAvatarURL({ dynamic: true }),
+          }),
+      ],
     });
   }
 });
