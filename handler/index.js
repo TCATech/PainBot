@@ -1,6 +1,6 @@
-const { glob } = require("glob");
-const { promisify } = require("util");
-const { Client } = require("discord.js");
+const {glob} = require("glob");
+const {promisify} = require("util");
+const {Client} = require("discord.js");
 const mongoose = require("mongoose");
 
 const globPromise = promisify(glob);
@@ -17,7 +17,7 @@ module.exports = async (client) => {
     const directory = splitted[splitted.length - 2];
 
     if (file.name) {
-      const properties = { directory, ...file };
+      const properties = {directory, ...file};
       client.commands.set(file.name, properties);
     }
   });
@@ -37,13 +37,16 @@ module.exports = async (client) => {
     arrayOfSlashCommands.push(file);
   });
   client.on("ready", async () => {
-    // Register for a single guild
-    await client.guilds.cache
-      .get(client.config.guild)
-      .commands.set(arrayOfSlashCommands);
-
-    // Register for all the guilds the bot is in
-    // await client.application.commands.set(arrayOfSlashCommands);
+    const guild = client.guilds.cache.get(client.config.guild);
+    if (guild) {
+      console.log("Guild found, loading slash commands for it...");
+      await guild.commands.set(arrayOfSlashCommands);
+      console.log("Done!");
+    } else {
+      console.log("Guild not found, loading slash commands globally...");
+      await client.application.commands.set(arrayOfSlashCommands);
+      console.log("Done! Slash commands will show up in an hour or so.");
+    }
   });
 
   // Events

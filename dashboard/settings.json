@@ -1,0 +1,12 @@
+{
+  "website": {
+    "support": "https://discord.gg/t7e48xn5Nq",
+    "domain": "http://127.0.0.1:3000"
+  },
+  "config": {
+    "port": 3000,
+    "callback": "http://127.0.0.1:3000/callback",
+    "clientID": "890469134138232862",
+    "secret": "pelJShNzqwrEbmFhmt4zVQwLAq8C3xl6"
+  }
+}

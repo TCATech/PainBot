@@ -18,4 +18,6 @@ client.on("ready", () => {
   }, 10000);
 
   console.log(`${client.user.tag} is now online!`);
+
+  require("../dashboard")(client);
 });
