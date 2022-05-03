@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 body {
-  background: #23272A
+  background: #23272a;
 }
 h1 {
   text-align: center;
@@ -11,12 +10,12 @@ p {
   text-align: center;
 }
 a {
-  color: #5663F7;
+  color: #5663f7;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 a:hover {
-  color: #0062ff
+  color: #0062ff;
 }
 section {
   margin-top: 10px;
@@ -39,8 +38,9 @@ section {
   color: white;
 }
 #category a.active {
-  background-color: #5663F7;
-  border-color: #5663F7;
+  background-color: #fffb00;
+  border-color: #fffb00;
+  color: black;
 }
 
 .accordion-item {
@@ -54,7 +54,7 @@ section {
 
 .accordion-button:not(.collapsed) {
   color: white;
-  background-color: #5663F7;
+  background-color: #5663f7;
 }
 
 /* .accordion-button:not(.collapsed)::after {
@@ -74,34 +74,32 @@ section {
 }
 
 .accordion-item:first-of-type {
-  border-top-left-radius: .25rem;
-  border-top-right-radius: .25rem;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
-
 .accordion-item:last-of-type {
-  border-bottom-left-radius: .25rem;
-  border-bottom-right-radius: .25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 #commands_menu {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-
 
 /* ANIMATION */
 
-.slide-up-fade-in{
-    animation: slide-up-fade-in ease 1.5s;
+.slide-up-fade-in {
+  animation: slide-up-fade-in ease 1.5s;
 }
 
-@keyframes slide-up-fade-in{
-    0% {
-        opacity:0;
-        transform:  translate(0px,40px)  ;
-    }
-    100% {
-        opacity:1;
-        transform:  translate(0px,0px)  ;
-    }
+@keyframes slide-up-fade-in {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
 }

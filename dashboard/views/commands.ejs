@@ -73,7 +73,7 @@
                         aria-expanded="<%= i==0 ? 'true' : 'false' %>"
                         aria-controls="<%= cmd.name %>"
                       >
-                        +<%= cmd.name %>
+                        ><%= cmd.name %>
                       </button>
                     </h2>
                     <div
@@ -107,49 +107,16 @@
     <section>
       <div
         class="card-footer"
-        style="margin-top: 15%; text-align: center; color: #5663f7"
+        style="margin-top: 2%; text-align: center; color: #fffb00"
       >
-        <hr
-          style="
-            width: 75%;
-            background-color: #ffffff !important;
-            color: #ffffff !important;
-            border: 5px solid #ffffff !important;
-            border-radius: 25px;
-            margin-left: 12%;
-          "
-        />
-        <h4 style="margin-top: 5%">
-          <img class="logo"
-            src="<%= bot.user.displayAvatarURL({size: 4096}) %>"
-            style="width: 2%; margin-top: -0.5%"
-          />
-          <span style="font-size: 40px"><%= bot.user.username %></span>
-        </h4>
-        <h5 style="text-align: center">
-          <a
-            href="https://github.com/TCATech"
-            target="_blank"
-            style="
-              font-size: 12px;
-              color: #888a9b !important;
-              text-decoration: none;
-            "
-            >&copy; <%=new Date().getFullYear() %> TCA Tech | All rights
-            reserved.</a
-          ><br /><br />
-          <a
-            href="https://github.com/Tomato6966/Musicium"
-            target="_blank"
-            style="
-              font-size: 20px;
-              color: #5663f7 !important;
-              text-decoration: none;
-            "
-            >Original code by <code>Tomato#6966</code></a
-          >
-        </h5>
-      </div>
+      <hr style="width: 75%;background-color: #FFFFFF!important;color: #FFFFFF!important;border: 5px solid #FFFFFF!important;border-radius:25px;margin-left: 12%;">
+      <h4 style="margin-top:5%;">
+        <img src="<%= bot.user.displayAvatarURL({size: 4096}) %>" style="width: 4%;margin-top: -0.5%; border-radius: 50%;"> <span style="font-size: 40px;"><%= bot.user.username %></span>
+      </h4>
+      <br />
+      <h5 style="text-align: center;">
+        <a href="https://github.com/TCATech" target="_blank" style="font-size: 12px; color: #888a9b!important;text-decoration: none;">&copy; <%=new Date().getFullYear() %> TCA Tech | All rights reserved.</a><br><br>
+        <a target="_blank" style="font-size: 20px; color: #fffb00!important;text-decoration: none;">Dashboard by <code>Tomato#6966</code>, bot by <code>Not TCA#6651</code></a>
     </section>
   </body>
 </html>
