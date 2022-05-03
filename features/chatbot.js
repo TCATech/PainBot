@@ -14,10 +14,7 @@ module.exports = (client) => {
       },
       async (err, data) => {
         if (err) console.log(err);
-        const channels = data.Channel.map((c) => {
-          return c;
-        });
-        if (!data || !channels.includes(message.channel.id)) return;
+        if (!data || !data.Channel.includes(message.channel.id)) return;
         chatbot
           .chat(message.content)
           .then((response) =>
