@@ -25,7 +25,7 @@ module.exports = (client) => {
     new Strategy(
       {
         clientID: Settings.config.clientID,
-        clientSecret: process.env.secret || Settings.config.secret,
+        clientSecret: process.env.SECRET || Settings.config.secret,
         callbackURL: Settings.config.callback,
         scope: ["identify", "guilds", "guilds.join"],
       },
@@ -37,7 +37,7 @@ module.exports = (client) => {
 
   app.use(
     session({
-      store: new MemoryStore({checkPeriod: 86400000}),
+      store: new MemoryStore({ checkPeriod: 86400000 }),
       secret: `#@%#&^$^$%@$^$&%#$%@#$%$^%&$%^#$%@#$%#E%#%@$FEErfgr3g#%GT%536c53cc6%5%tv%4y4hrgrggrgrgf4n`,
       resave: false,
       saveUninitialized: false,
@@ -86,12 +86,12 @@ module.exports = (client) => {
       }
       next();
     },
-    passport.authenticate("discord", {prompt: "none"})
+    passport.authenticate("discord", { prompt: "none" })
   );
 
   app.get(
     "/callback",
-    passport.authenticate("discord", {failureRedirect: "/"}),
+    passport.authenticate("discord", { failureRedirect: "/" }),
     async (req, res) => {
       let banned = false; //client.settings.get("bannedusers")
       if (banned) {
@@ -185,7 +185,7 @@ module.exports = (client) => {
       Permissions: Discord.Permissions,
       botconfig: Settings.website,
       callback: Settings.config.callback,
-      prefix: await prefixModel.findOne({Guild: guild.id}),
+      prefix: await prefixModel.findOne({ Guild: guild.id }),
       chatbot: await chatbotModel.findOne({
         Guild: guild.id,
       }),
