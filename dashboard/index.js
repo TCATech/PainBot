@@ -10,6 +10,7 @@ const BotConfig = require("../config.json");
 const Settings = require("./settings.json");
 const passport = require("passport");
 const prefixModel = require("../models/prefix");
+const chatbotModel = require("../models/chatbot");
 
 module.exports = (client) => {
   //WEBSITE CONFIG BACKEND
@@ -174,6 +175,9 @@ module.exports = (client) => {
       botconfig: Settings.website,
       callback: Settings.config.callback,
       prefix: await prefixModel.findOne({Guild: guild.id}),
+      chatbot: await chatbotModel.findOne({
+        Guild: guild.id,
+      }),
     });
   });
 
@@ -201,9 +205,6 @@ module.exports = (client) => {
       return res.redirect(
         "/?error=" + encodeURIComponent("You are not allowed to do that")
       );
-    const prefixData = await prefixModel.findOne({
-      Guild: guild.id,
-    });
     if (req.body.prefix)
       await prefixModel.findOneAndUpdate(
         {
@@ -211,6 +212,18 @@ module.exports = (client) => {
         },
         {
           Prefix: req.body.prefix,
+        },
+        {
+          upsert: true,
+        }
+      );
+    if (req.body.chatbot)
+      await chatbotModel.findOneAndUpdate(
+        {
+          Guild: guild.id,
+        },
+        {
+          Channel: req.body.chatbot,
         },
         {
           upsert: true,
@@ -225,6 +238,9 @@ module.exports = (client) => {
       botconfig: Settings.website,
       callback: Settings.config.callback,
       prefix: await prefixModel.findOne({
+        Guild: guild.id,
+      }),
+      chatbot: await chatbotModel.findOne({
         Guild: guild.id,
       }),
     });

@@ -32,13 +32,13 @@
           <i class="iconify" data-icon="ant-design:dashboard-filled"></i>
           <b><%= guild.name %></b> | Dashboard
         </h1>
-        <div class="form-body" style="margin-top: -10%">
+        <div class="form-body" style="margin-top: -2%">
           <div class="form-holder">
             <div class="form-content">
               <div class="form-items">
                 <h3>Server Settings</h3>
                 <p>
-                  Change the server settings of <%= bot.user.username %> for %=
+                  Change the server settings of <%= bot.user.username %> for <%=
                   guild.name %>. 
                 </p>
                 <form method="POST">
@@ -63,6 +63,26 @@
                     placeholder="The new prefix"
                   />
 
+                  <br />
+
+                  <h5 style="margin-bottom: 0.5rem; margin-top: 10px;color:#fffb00">Chatbot:</h5>
+                                    <p style="font-style: italic;" class="disabled">A channel where you can talk to <%= bot.user.username %>.</p>
+                                    <select 
+                                        class="form-control selectpicker"
+                                        multiple  
+                                        data-width="100%"
+                                        data-live-search="true" 
+                                        aria-label="Chatbot"
+                                        name="chatbot"
+                                    >
+                                        <% guild.channels.cache.filter(channel=>channel.type==="GUILD_TEXT").sort((a, b) => a.rawPosition - b.rawPosition).forEach((channel, i) => { %>
+                                            <option value="<%= channel.id%>" 
+                                              <%= chatbot && chatbot.Channel.includes(channel.id) ? "selected" : "" %>> #<%= channel.name%>
+                                            </option>
+                                        <% }) %>
+                                    </select>
+
+                  <br />
                   <br />
 
                   <button

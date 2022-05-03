@@ -2,6 +2,8 @@ const {glob} = require("glob");
 const {promisify} = require("util");
 const {Client} = require("discord.js");
 const mongoose = require("mongoose");
+const fs = require("fs");
+const path = require("path");
 
 const globPromise = promisify(glob);
 
@@ -54,20 +56,20 @@ module.exports = async (client) => {
   eventFiles.map((value) => require(value));
 
   // Features
-  // const readFeatures = (dir) => {
-  //   const files = fs.readdirSync(path.join(__dirname, dir));
-  //   for (const file of files) {
-  //     const stat = fs.lstatSync(path.join(__dirname, dir, file));
-  //     if (stat.isDirectory()) {
-  //       readFeatures(path.join(dir, file));
-  //     } else {
-  //       const feature = require(path.join(__dirname, dir, file));
-  //       feature(client);
-  //     }
-  //   }
-  // };
+  const readFeatures = (dir) => {
+    const files = fs.readdirSync(path.join(__dirname, dir));
+    for (const file of files) {
+      const stat = fs.lstatSync(path.join(__dirname, dir, file));
+      if (stat.isDirectory()) {
+        readFeatures(path.join(dir, file));
+      } else {
+        const feature = require(path.join(__dirname, dir, file));
+        feature(client);
+      }
+    }
+  };
 
-  // readFeatures("../features/");
+  readFeatures("../features/");
 
   // MongoDB
   const mongoURI = process.env.mongoURI;
