@@ -126,12 +126,23 @@ module.exports = (client) => {
     });
   });
 
+  app.get("/commands", (req, res) => {
+    res.render("commands", {
+      req: req,
+      user: req.isAuthenticated() ? req.user : null,
+      bot: client,
+      Permissions: Discord.Permissions,
+      botconfig: Settings.website,
+      callback: Settings.config.callback,
+      commands: client.commands,
+      categories: client.categories,
+    });
+  });
+
   app.get("/dashboard", (req, res) => {
     if (!req.isAuthenticated() || !req.user) return res.redirect("/login");
     if (!req.user.guilds)
-      return res.redirect(
-        "/?error=" + encodeURIComponent("Cannot get your Guilds")
-      );
+      return res.redirect("/?error=" + encodeURIComponent("CANNOT_GET_GUILDS"));
     res.render("dashboard", {
       req: req,
       user: req.isAuthenticated() ? req.user : null,
