@@ -4,6 +4,7 @@ const got = require("got");
 module.exports = {
   name: "meme",
   description: "Fetches you a very funny meme.",
+  aliases: ["redditmeme", "rm"],
   run: async (client, message, args) => {
     message.channel.send("Fetching you a funny meme...").then((msg) => {
       got(`https://www.reddit.com/r/memes/random/.json`).then(

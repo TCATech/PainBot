@@ -25,6 +25,7 @@ const flags = {
 module.exports = {
   name: "userinfo",
   description: "Gets some info about a user.",
+  aliases: ["ui", "user", "uinfo", "whois", "wi"],
   /**
    * @param {Client} client
    * @param {Message} message

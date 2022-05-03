@@ -10,6 +10,7 @@ const moment = require("moment");
 module.exports = {
   name: "botinfo",
   description: "Tells you some info about PainBot.",
+  aliases: ["bi", "info", "bot"],
   /**
    *
    * @param {Client} client
@@ -17,10 +18,7 @@ module.exports = {
    */
   run: async (client, message) => {
     const embed = new MessageEmbed()
-      .setAuthor(
-        client.user.tag,
-        client.user.displayAvatarURL({ dynamic: true })
-      )
+      .setAuthor(client.user.tag, client.user.displayAvatarURL({dynamic: true}))
       .addField(
         "Servers watching",
         `${client.guilds.cache.size.toLocaleString()} server${

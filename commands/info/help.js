@@ -9,6 +9,7 @@ const {
 module.exports = {
   name: "help",
   description: "stop it. get some help.",
+  aliases: ["h", "halp"],
   /**
    *
    * @param {Client} client

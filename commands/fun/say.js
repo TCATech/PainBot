@@ -3,6 +3,7 @@ const { Client, Message } = require("discord.js");
 module.exports = {
   name: "say",
   description: "Makes PainBot say whatever you want :)",
+  aliases: ["speak", "talk", "tell"],
   /**
    * @param {Client} client
    * @param {Message} message

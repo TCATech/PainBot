@@ -5,6 +5,7 @@ const game = new TicTacToe({ language: "en" });
 module.exports = {
   name: "tictactoe",
   description: "Play TicTacToe against someone else, or with an AI.",
+  aliases: ["ttt"],
   /**
    * @param {Client} client
    * @param {Message} message

@@ -3,6 +3,8 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 module.exports = {
   name: "unmute",
   description: "Unmutes a member from the server.",
+  aliases: ["um", "untimeout", "uto", "ut"],
+  usage: "<user> [reason]",
   /**
    *
    * @param {Client} client

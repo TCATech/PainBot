@@ -4,6 +4,7 @@ const { animals } = require("nampis");
 module.exports = {
   name: "cat",
   description: "Fetches you a cute cat.",
+  aliases: ["kitty", "kitten"],
   /**
    * @param {Client} client
    * @param {Message} message
