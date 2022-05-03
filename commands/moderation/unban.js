@@ -3,6 +3,8 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 module.exports = {
   name: "unban",
   description: "Unbans a member from the server.",
+  aliases: ["ub"],
+  usage: "<userID>",
   /**
    *
    * @param {Client} client

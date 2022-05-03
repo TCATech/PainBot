@@ -5,6 +5,7 @@ module.exports = {
   name: "nuke",
   description:
     "Nukes an entire channel, deleting all of the messages sent in it.",
+  aliases: ["n"],
   /**
    * @param {Client} client
    * @param {Message} message

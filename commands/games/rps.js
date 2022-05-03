@@ -4,6 +4,7 @@ const { RockPaperScissors } = require("weky");
 module.exports = {
   name: "rps",
   description: "Play rock paper scissors against someone else!",
+  aliases: ["rockpaperscissors"],
   /**
    * @param {Client} client
    * @param {Message} message

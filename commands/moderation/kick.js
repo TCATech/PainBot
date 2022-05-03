@@ -3,6 +3,8 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 module.exports = {
   name: "kick",
   description: "Kicks a member from the server.",
+  aliases: ["k"],
+  usage: "<user> [reason]",
   /**
    *
    * @param {Client} client

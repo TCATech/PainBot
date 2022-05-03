@@ -1,9 +1,9 @@
-const { Client, Message, MessageEmbed } = require("discord.js");
+const {Client, Message, MessageEmbed} = require("discord.js");
 
 module.exports = {
   name: "avatar",
   description: "Gets the avatar of a specific person, or yourself.",
-  aliases: ["pfp"],
+  aliases: ["av", "pfp"],
   /**
    *
    * @param {Client} client
@@ -11,18 +11,21 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const member = message.mentions.members.first() || message.member;
+    const member =
+      message.mentions.members.first() ||
+      message.guild.members.cache.get(args[0]) ||
+      message.member;
+    const avatar = member.user.displayAvatarURL({dynamic: true, size: 4096});
     const embed = new MessageEmbed()
-      .setAuthor(
-        member.user.tag,
-        member.user.displayAvatarURL({ dynamic: true })
+      .setTitle(member.displayName + "'s Avatar")
+      .setDescription(
+        "[Click here to download](" + avatar.replace("webp", "png") + ")"
       )
-      .setTitle("Avatar")
       .setColor(message.color)
-      .setImage(member.user.displayAvatarURL({ dynamic: true, size: 256 }))
+      .setImage(avatar)
       .setFooter({
         text: client.user.username,
-        iconURL: client.user.displayAvatarURL({ dynamic: true }),
+        iconURL: client.user.displayAvatarURL({dynamic: true}),
       })
       .setTimestamp();
 

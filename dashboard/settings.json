@@ -1,0 +1,12 @@
+{
+  "website": {
+    "support": "https://discord.gg/t7e48xn5Nq",
+    "domain": "http://127.0.0.1:6651"
+  },
+  "config": {
+    "port": 6651,
+    "callback": "http://127.0.0.1:6651/callback",
+    "clientID": "890469134138232862",
+    "secret": "you can put this in .env too"
+  }
+}

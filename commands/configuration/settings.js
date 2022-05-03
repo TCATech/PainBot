@@ -4,7 +4,8 @@ const changeSettings = require("../../utils/changeSettings");
 module.exports = {
   name: "settings",
   description: "Change any setting about the bot.",
-  userPerms: ["MANAGE_SERVER"],
+  aliases: ["set", "config"],
+  userPerms: ["MANAGE_GUILD"],
   /**
    *
    * @param {Client} client

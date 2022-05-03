@@ -1,4 +1,4 @@
-const { Client, Collection } = require("discord.js");
+const {Client, Collection} = require("discord.js");
 require("dotenv/config");
 const client = new Client({
   intents: 32767,
@@ -10,6 +10,7 @@ client.config = require("./config");
 client.commands = new Collection();
 client.events = new Collection();
 client.slashCommands = new Collection();
+client.categories = require("fs").readdirSync(`./commands`);
 
 require("./handler")(client);
 

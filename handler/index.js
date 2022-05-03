@@ -1,7 +1,9 @@
-const { glob } = require("glob");
-const { promisify } = require("util");
-const { Client } = require("discord.js");
+const {glob} = require("glob");
+const {promisify} = require("util");
+const {Client} = require("discord.js");
 const mongoose = require("mongoose");
+const fs = require("fs");
+const path = require("path");
 
 const globPromise = promisify(glob);
 
@@ -17,8 +19,36 @@ module.exports = async (client) => {
     const directory = splitted[splitted.length - 2];
 
     if (file.name) {
-      const properties = { directory, ...file };
+      const properties = {directory, ...file};
       client.commands.set(file.name, properties);
+    }
+  });
+
+  // Slash commands
+  const slashCommands = await globPromise(
+    `${process.cwd()}/slashCommands/*/*.js`
+  );
+
+  const arrayOfSlashCommands = [];
+  slashCommands.map((value) => {
+    const file = require(value);
+    if (!file?.name) return;
+    client.slashCommands.set(file.name, file);
+
+    if (["MESSAGE", "USER"].includes(file.type)) delete file.description;
+    arrayOfSlashCommands.push(file);
+  });
+  client.on("ready", async () => {
+    const guild = client.guilds.cache.get(client.config.guild);
+    if (guild) {
+      console.log("Guild found, loading slash commands for it...");
+      await guild.commands.set(arrayOfSlashCommands);
+      console.log("Done!");
+    } else {
+      console.log("Guild not found, skipping slash commands...");
+      // console.log("Guild not found, loading slash commands globally...");
+      // await client.application.commands.set(arrayOfSlashCommands);
+      // console.log("Done! Slash commands will show up in an hour or so.");
     }
   });
 
@@ -27,20 +57,20 @@ module.exports = async (client) => {
   eventFiles.map((value) => require(value));
 
   // Features
-  // const readFeatures = (dir) => {
-  //   const files = fs.readdirSync(path.join(__dirname, dir));
-  //   for (const file of files) {
-  //     const stat = fs.lstatSync(path.join(__dirname, dir, file));
-  //     if (stat.isDirectory()) {
-  //       readFeatures(path.join(dir, file));
-  //     } else {
-  //       const feature = require(path.join(__dirname, dir, file));
-  //       feature(client);
-  //     }
-  //   }
-  // };
+  const readFeatures = (dir) => {
+    const files = fs.readdirSync(path.join(__dirname, dir));
+    for (const file of files) {
+      const stat = fs.lstatSync(path.join(__dirname, dir, file));
+      if (stat.isDirectory()) {
+        readFeatures(path.join(dir, file));
+      } else {
+        const feature = require(path.join(__dirname, dir, file));
+        feature(client);
+      }
+    }
+  };
 
-  // readFeatures("../features/");
+  readFeatures("../features/");
 
   // MongoDB
   const mongoURI = process.env.mongoURI;

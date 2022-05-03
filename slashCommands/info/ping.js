@@ -1,18 +1,13 @@
-const { Message, Client, MessageEmbed } = require("discord.js");
-const ms = require("ms");
+const { MessageEmbed } = require("discord.js");
+const { Command } = require("reconlx");
 
-module.exports = {
+module.exports = new Command({
   name: "ping",
-  aliases: ["p"],
-  /**
-   *
-   * @param {Client} client
-   * @param {Message} message
-   * @param {String[]} args
-   */
-  run: async (client, message, args) => {
-    const res = await message.reply({
+  description: "Tells you how much latency the bot currently has.",
+  run: async ({ client, interaction }) => {
+    const res = await interaction.reply({
       content: "Pinging...",
+      fetchReply: true,
     });
 
     const ping = res.createdTimestamp - message.createdTimestamp;
@@ -28,9 +23,10 @@ module.exports = {
       })
       .setColor(message.color)
       .setTimestamp();
-    res.edit({
+    interaction.editReply({
       content: "\u200B",
       embeds: [embed],
+      ephemeral: true,
     });
   },
-};
+});

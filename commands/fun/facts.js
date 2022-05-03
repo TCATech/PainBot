@@ -4,6 +4,7 @@ const pop = require("popcat-wrapper");
 module.exports = {
   name: "facts",
   description: "That man is spitting facts!",
+  aliases: ["spittingfacts", "sf"],
   /**
    *
    * @param {Client} client
