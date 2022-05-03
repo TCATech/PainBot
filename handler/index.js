@@ -45,9 +45,10 @@ module.exports = async (client) => {
       await guild.commands.set(arrayOfSlashCommands);
       console.log("Done!");
     } else {
-      console.log("Guild not found, loading slash commands globally...");
-      await client.application.commands.set(arrayOfSlashCommands);
-      console.log("Done! Slash commands will show up in an hour or so.");
+      console.log("Guild not found, skipping slash commands...");
+      // console.log("Guild not found, loading slash commands globally...");
+      // await client.application.commands.set(arrayOfSlashCommands);
+      // console.log("Done! Slash commands will show up in an hour or so.");
     }
   });
 
