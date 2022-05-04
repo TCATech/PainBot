@@ -15,8 +15,15 @@ module.exports = {
     let memberCount = guild.memberCount;
 
     const embed = new MessageEmbed()
-      .setTitle("Members")
-      .setDescription(memberCount.toString())
+      .addField("Members", memberCount.toString())
+      .addField(
+        "Humans",
+        guild.members.cache.filter((m) => !m.user.bot).size.toString()
+      )
+      .addField(
+        "Bots",
+        guild.members.cache.filter((m) => m.user.bot).size.toString()
+      )
       .setColor(message.color)
       .setFooter({
         text: client.user.username,
