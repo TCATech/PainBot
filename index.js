@@ -1,3 +1,5 @@
+// Bot client
+
 const { Client, Collection } = require("discord.js");
 require("dotenv/config");
 const client = new Client({
