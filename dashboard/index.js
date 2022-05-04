@@ -240,6 +240,12 @@ module.exports = (client) => {
           upsert: true,
         }
       );
+    else
+      await chatbotModel
+        .findOneAndRemove({
+          Guild: guild.id,
+        })
+        .catch(() => {});
     res.render("settings", {
       req: req,
       user: req.isAuthenticated() ? req.user : null,
