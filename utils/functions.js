@@ -8,4 +8,7 @@ module.exports = {
     }
     return word;
   },
+  escapeRegex: function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
+  },
 };

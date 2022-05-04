@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const client = require("../index");
 const prefixModel = require("../models/prefix");
+const { escapeRegex } = require("../utils/functions");
 
 client.on("messageCreate", async (message) => {
   if (message.author.bot || !message.guild) return;
@@ -19,11 +20,43 @@ client.on("messageCreate", async (message) => {
 
   message.prefix = prefix;
 
-  if (!message.content.toLowerCase().startsWith(prefix)) return;
+  const prefixRegex = new RegExp(
+    `^(<@!?${client.user.id}>|${escapeRegex(client.config.prefix)})\\s*`
+  );
+  if (!prefixRegex.test(message.content)) return;
+
+  const [, mPrefix] = message.content.match(prefixRegex);
 
   message.color = "#FFFB00";
 
-  const [cmd, ...args] = message.content.slice(prefix.length).trim().split(" ");
+  const [cmd, ...args] = message.content
+    .slice(mPrefix.length)
+    .trim()
+    .split(/ +/);
+
+  if (cmd.length === 0) {
+    if (mPrefix.includes(client.user.id)) {
+      return message.reply({
+        embeds: [
+          new MessageEmbed()
+            .setTitle("Hey there!")
+            .setDescription(
+              "My prefix in this server is `" +
+                prefix +
+                "`. Use `" +
+                prefix +
+                "help` to see all of my commands!"
+            )
+            .setColor(message.color)
+            .setFooter({
+              text: client.user.username,
+              iconURL: client.user.displayAvatarURL({ dynamic: true }),
+            })
+            .setTimestamp(),
+        ],
+      });
+    }
+  }
 
   const command =
     client.commands.get(cmd.toLowerCase()) ||

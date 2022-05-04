@@ -1,6 +1,6 @@
-const {glob} = require("glob");
-const {promisify} = require("util");
-const {Client} = require("discord.js");
+const { glob } = require("glob");
+const { promisify } = require("util");
+const { Client } = require("discord.js");
 const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
@@ -19,7 +19,7 @@ module.exports = async (client) => {
     const directory = splitted[splitted.length - 2];
 
     if (file.name) {
-      const properties = {directory, ...file};
+      const properties = { directory, ...file };
       client.commands.set(file.name, properties);
     }
   });
