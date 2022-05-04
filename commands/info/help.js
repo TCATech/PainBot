@@ -114,7 +114,7 @@ module.exports = {
         .setDescription(
           "Please choose a category using the dropdown menu below. If you want more help with a specific command, use `" +
             message.prefix +
-            "help <command>`."
+            "help [command]`."
         )
         .setColor(message.color)
         .setFooter({
@@ -132,7 +132,7 @@ module.exports = {
         new MessageActionRow().addComponents(
           new MessageSelectMenu()
             .setCustomId("help-menu")
-            .setPlaceholder("Category...")
+            .setPlaceholder("Select a category...")
             .setDisabled(state)
             .addOptions(
               categories.map((cmd) => {
