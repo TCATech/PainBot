@@ -4,7 +4,7 @@ const ms = require("ms");
 module.exports = {
   name: "purge",
   description: "Deletes a specific amount of messages from the channel.",
-  aliases: ["p", "prune", "clear"],
+  aliases: ["prune", "clear"],
   usage: "<amount>",
   /**
    * @param {Client} client

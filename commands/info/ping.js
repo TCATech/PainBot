@@ -3,7 +3,6 @@ const ms = require("ms");
 
 module.exports = {
   name: "ping",
-  aliases: ["p"],
   /**
    *
    * @param {Client} client

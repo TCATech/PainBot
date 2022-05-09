@@ -1,0 +1,18 @@
+{
+  "names": {
+    "configuration": "⚙️ Configuration",
+    "fun": "🎉 Fun",
+    "games": "🎮 Minigames",
+    "info": "📚 Information",
+    "moderation": "🔨 Moderation",
+    "music": "🎶 Music"
+  },
+  "emojis": {
+    "configuration": "⚙️",
+    "fun": "🎉",
+    "games": "🎮",
+    "info": "📚",
+    "moderation": "🔨",
+    "music": "🎶"
+  }
+}

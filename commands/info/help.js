@@ -5,6 +5,7 @@ const {
   MessageActionRow,
   MessageSelectMenu,
 } = require("discord.js");
+const categoryList = require("../../categories.json");
 
 module.exports = {
   name: "help",
@@ -20,21 +21,51 @@ module.exports = {
     if (args[0]) {
       const command =
         client.commands.get(args[0]) ||
-        client.commands.find((cmd) => cmd.aliases.includes(args[0]));
-      if (!command)
+        client.commands.find(
+          (cmd) => cmd.aliases && cmd.aliases.includes(args[0])
+        );
+      if (!command) {
+        const category = client.categories.find(
+          (category) => category === args[0]
+        );
+        if (!category) {
+          return message.reply({
+            embeds: [
+              new MessageEmbed()
+                .setTitle("Uh oh!")
+                .setDescription("That command or category doesn't exist!")
+                .setColor("RED")
+                .setFooter({
+                  text: client.user.username,
+                  iconURL: client.user.displayAvatarURL({ dynamic: true }),
+                })
+                .setTimestamp(),
+            ],
+          });
+        }
+        const embed = new MessageEmbed()
+          .setTitle(
+            `${categoryList.names[category]} commands [${client.commands
+              .filter((cmd) => cmd.directory === category)
+              .size.toLocaleString()}]`
+          )
+          .setDescription(
+            client.commands
+              .filter((cmd) => cmd.directory === category)
+              .map((cmd) => `\`${cmd.name}\``)
+              .join(" ")
+          )
+          .setColor(message.color)
+          .setFooter({
+            text: client.user.username,
+            iconURL: client.user.displayAvatarURL({ dynamic: true }),
+          })
+          .setTimestamp();
+
         return message.reply({
-          embeds: [
-            new MessageEmbed()
-              .setTitle("Uh oh!")
-              .setDescription("That command doesn't exist!")
-              .setColor("RED")
-              .setFooter({
-                text: client.user.username,
-                iconURL: client.user.displayAvatarURL({ dynamic: true }),
-              })
-              .setTimestamp(),
-          ],
+          embeds: [embed],
         });
+      }
 
       const embed = new MessageEmbed()
         .setColor(message.color)
@@ -139,6 +170,7 @@ module.exports = {
                 return {
                   label: cmd.directory,
                   value: cmd.directory.toLowerCase(),
+                  emoji: categoryList.emojis[cmd.directory.toLowerCase()],
                   description: `Commands from the ${cmd.directory} category`,
                 };
               })
@@ -166,18 +198,16 @@ module.exports = {
         );
 
         const categoryEmbed = new MessageEmbed()
-          .setTitle(`${formatString(directory)} commands`)
-          .setDescription(
-            `Here is a list of commands from the ${directory} category.`
+          .setTitle(
+            `${categoryList.names[directory]} commands [${client.commands
+              .filter((cmd) => cmd.directory === directory)
+              .size.toLocaleString()}]`
           )
-          .addFields(
-            category.commands.map((cmd) => {
-              return {
-                name: `\`${cmd.name}\``,
-                value: cmd.description,
-                inline: true,
-              };
-            })
+          .setDescription(
+            client.commands
+              .filter((cmd) => cmd.directory === directory)
+              .map((cmd) => `\`${cmd.name}\``)
+              .join(" ")
           )
           .setColor(message.color)
           .setFooter({
@@ -191,7 +221,8 @@ module.exports = {
 
       collector.on("end", () => {
         init.edit({
-          content: "You ran out of time! Do `>help` again.",
+          content:
+            "You ran out of time! Do `" + message.prefix + "help` again.",
           components: components(true),
         });
       });

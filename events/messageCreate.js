@@ -131,10 +131,12 @@ client.on("messageCreate", async (message) => {
           .setTitle("Uh oh!")
           .setDescription("An error has occured.")
           .addField("Error", err.toString())
+          .setColor(message.color)
           .setFooter({
             text: client.user.username,
             iconURL: client.user.displayAvatarURL({ dynamic: true }),
-          }),
+          })
+          .setTimestamp(),
       ],
     });
   }
