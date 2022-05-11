@@ -1,5 +1,4 @@
 const { Client, Message, MessageEmbed } = require("discord.js");
-const prefixModel = require("../../models/prefix");
 
 module.exports = {
   name: "prefix",
@@ -47,18 +46,11 @@ module.exports = {
             .setTimestamp(),
         ],
       });
+    client.settings.ensure(message.guild.id, {
+      prefix: client.config.prefix,
+    });
     if (args[0] === client.config.prefix || args[0] === "reset") {
-      await prefixModel.findOneAndUpdate(
-        {
-          Guild: message.guild.id,
-        },
-        {
-          Prefix: client.config.prefix,
-        },
-        {
-          upsert: true,
-        }
-      );
+      client.settings.set(message.guild.id, client.config.prefix, "prefix");
 
       return message.reply({
         embeds: [
@@ -77,17 +69,7 @@ module.exports = {
       });
     }
 
-    await prefixModel.findOneAndUpdate(
-      {
-        Guild: message.guild.id,
-      },
-      {
-        Prefix: args[0],
-      },
-      {
-        upsert: true,
-      }
-    );
+    client.settings.set(message.guild.id, args[0], "prefix");
 
     message.reply({
       embeds: [

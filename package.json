@@ -27,6 +27,7 @@
     "distube": "^3.3.4",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.7",
+    "enmap": "^5.9.0",
     "express": "^4.18.1",
     "express-rate-limit": "^6.4.0",
     "express-session": "^1.17.2",

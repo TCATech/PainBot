@@ -73,8 +73,8 @@ module.exports = async (client) => {
   readFeatures("../features/");
 
   // MongoDB
-  const mongoURI = process.env.mongoURI;
-  if (!mongoURI) return;
+  // const mongoURI = process.env.mongoURI;
+  // if (!mongoURI) return;
 
-  mongoose.connect(mongoURI).then(() => console.log("Connected to MongoDB"));
+  // mongoose.connect(mongoURI).then(() => console.log("Connected to MongoDB"));
 };

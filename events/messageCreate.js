@@ -1,24 +1,16 @@
 const { MessageEmbed } = require("discord.js");
 const client = require("../index");
-const prefixModel = require("../models/prefix");
 const { escapeRegex } = require("../utils/functions");
 
 client.on("messageCreate", async (message) => {
   if (message.author.bot || !message.guild) return;
 
-  const data = await prefixModel.findOne({
-    Guild: message.guild.id,
+  client.settings.ensure(message.guild.id, {
+    prefix: client.config.prefix,
+    chatbot: "no",
   });
 
-  let prefix = "";
-
-  if (data) {
-    prefix = data.Prefix;
-  } else if (!data) {
-    prefix = client.config.prefix;
-  }
-
-  message.prefix = prefix;
+  message.prefix = client.settings.get(message.guild.id, "prefix");
 
   const prefixRegex = new RegExp(
     `^(<@!?${client.user.id}>|${escapeRegex(message.prefix)})\\s*`
@@ -42,9 +34,9 @@ client.on("messageCreate", async (message) => {
             .setTitle("Hey there!")
             .setDescription(
               "My prefix in this server is `" +
-                prefix +
+                message.prefix +
                 "`. Use `" +
-                prefix +
+                message.prefix +
                 "help` to see all of my commands!"
             )
             .setColor(message.color)
