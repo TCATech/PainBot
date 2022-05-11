@@ -19,7 +19,7 @@ client.on("messageCreate", async (message) => {
 
   const [, mPrefix] = message.content.match(prefixRegex);
 
-  message.color = "#FFFB00";
+  message.color = client.config.color;
 
   const [cmd, ...args] = message.content
     .slice(mPrefix.length)
@@ -39,7 +39,7 @@ client.on("messageCreate", async (message) => {
                 message.prefix +
                 "help` to see all of my commands!"
             )
-            .setColor(message.color)
+            .setColor(client.config.color)
             .setFooter({
               text: client.user.username,
               iconURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -74,7 +74,7 @@ client.on("messageCreate", async (message) => {
             )
             .join(", ")}\``
         )
-        .setColor(message.color)
+        .setColor(client.config.color)
         .setFooter({
           text: client.user.username,
           iconURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -103,7 +103,7 @@ client.on("messageCreate", async (message) => {
             )
             .join(", ")}\``
         )
-        .setColor(message.color)
+        .setColor(client.config.color)
         .setFooter({
           text: client.user.username,
           iconURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -123,7 +123,7 @@ client.on("messageCreate", async (message) => {
           .setTitle("Uh oh!")
           .setDescription("An error has occured.")
           .addField("Error", err.toString())
-          .setColor(message.color)
+          .setColor(client.config.color)
           .setFooter({
             text: client.user.username,
             iconURL: client.user.displayAvatarURL({ dynamic: true }),

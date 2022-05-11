@@ -23,7 +23,7 @@ module.exports = {
           .setDescription(
             `I have successfully unbanned **${user.tag}** from the server!`
           )
-          .setColor(message.color)
+          .setColor(client.config.color)
           .setFooter({
             text: client.user.username,
             iconURL: client.user.displayAvatarURL({ dynamic: true }),

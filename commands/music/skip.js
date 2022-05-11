@@ -65,7 +65,7 @@ module.exports = {
     message.reply({
       embeds: [
         new MessageEmbed()
-          .setColor(message.color)
+          .setColor(client.config.color)
           .setTimestamp()
           .setTitle(`⏭ **Skipped to the next song!**`)
           .setFooter(

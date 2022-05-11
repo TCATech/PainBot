@@ -22,7 +22,7 @@ module.exports = {
             .setTitle(`${memeTitle}`)
             .setURL(`${memeUrl}`)
             .setImage(memeImage)
-            .setColor(message.color)
+            .setColor(client.config.color)
             .setFooter({
               text: `👍 ${memeUpvotes} | 👎 ${memeDownvotes} | 💬 ${memeNumComments}`,
             })

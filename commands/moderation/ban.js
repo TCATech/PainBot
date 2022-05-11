@@ -42,7 +42,7 @@ module.exports = {
         `I have successfully banned **${member.user.tag}** from the server!`
       )
       .addField("Reason", reason)
-      .setColor(message.color)
+      .setColor(client.config.color)
       .setFooter({
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),

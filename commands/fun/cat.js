@@ -18,7 +18,7 @@ module.exports = {
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
       })
-      .setColor(message.color)
+      .setColor(client.config.color)
       .setTimestamp();
 
     return message.reply({ embeds: [embed] });

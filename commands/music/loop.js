@@ -126,7 +126,7 @@ module.exports = {
         new MessageEmbed()
           .setTitle("Yay!")
           .setDescription(`Loop mode has been set to: ${loopMsg}`)
-          .setColor(message.color)
+          .setColor(client.config.color)
           .setFooter({
             text: client.user.username,
             iconURL: client.user.displayAvatarURL({ dynamic: true }),

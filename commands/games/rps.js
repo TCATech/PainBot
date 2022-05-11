@@ -22,7 +22,7 @@ module.exports = {
       embed: {
         title: "Rock Paper Scissors",
         description: `Press the button below to choose your element.`,
-        color: message.color,
+        color: client.config.color,
         footer: "Command powered by Weky",
         timestamp: true,
       },

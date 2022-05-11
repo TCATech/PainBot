@@ -59,7 +59,7 @@ module.exports = {
             .setDescription(
               `Your prefix has been reset to \`${client.config.prefix}\`!`
             )
-            .setColor(message.color)
+            .setColor(client.config.color)
             .setFooter({
               text: client.user.username,
               iconURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -76,7 +76,7 @@ module.exports = {
         new MessageEmbed()
           .setTitle("Woo!")
           .setDescription(`Your prefix is now \`${args[0]}\`!`)
-          .setColor(message.color)
+          .setColor(client.config.color)
           .setFooter({
             text: client.user.username,
             iconURL: client.user.displayAvatarURL({ dynamic: true }),

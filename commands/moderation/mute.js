@@ -56,7 +56,7 @@ module.exports = {
       .setTitle("*zips mouth*")
       .setDescription(`I have successfully muted **${member.user.tag}**!`)
       .addField("Reason", reason)
-      .setColor(message.color)
+      .setColor(client.config.color)
       .setFooter({
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),

@@ -55,7 +55,7 @@ module.exports = {
               .map((cmd) => `\`${cmd.name}\``)
               .join(" ")
           )
-          .setColor(message.color)
+          .setColor(client.config.color)
           .setFooter({
             text: client.user.username,
             iconURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -68,7 +68,7 @@ module.exports = {
       }
 
       const embed = new MessageEmbed()
-        .setColor(message.color)
+        .setColor(client.config.color)
         .setFooter({
           text: client.user.username,
           iconURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -147,7 +147,7 @@ module.exports = {
             message.prefix +
             "help [command]`."
         )
-        .setColor(message.color)
+        .setColor(client.config.color)
         .setFooter({
           text: client.user.username,
           iconURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -209,7 +209,7 @@ module.exports = {
               .map((cmd) => `\`${cmd.name}\``)
               .join(" ")
           )
-          .setColor(message.color)
+          .setColor(client.config.color)
           .setFooter({
             text: client.user.username,
             iconURL: client.user.displayAvatarURL({ dynamic: true }),

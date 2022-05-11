@@ -20,7 +20,7 @@ module.exports = {
       embed: {
         title: "FastType",
         description: `**${message.author}** has **{{time}}** to type the word below.`,
-        color: message.color,
+        color: client.config.color,
         footer: "Command powered by Weky",
         timestamp: true,
       },

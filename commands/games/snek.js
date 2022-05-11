@@ -15,7 +15,7 @@ module.exports = {
       message: message,
       embed: {
         title: "Snake",
-        color: message.color,
+        color: client.config.color,
         footer: "Command powered by Weky",
       },
       emojis: {

@@ -101,7 +101,7 @@ module.exports = {
         `<t:${parseInt(member.user.createdTimestamp / 1000)}:R>`,
         true
       )
-      .setColor(message.color)
+      .setColor(client.config.color)
       .setFooter({
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),

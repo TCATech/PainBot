@@ -15,7 +15,7 @@ module.exports = {
       message,
       embed: {
         title: "Calculator",
-        color: message.color,
+        color: client.config.color,
         footer: "Command powered by Weky",
         timestamp: true,
       },

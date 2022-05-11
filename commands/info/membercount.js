@@ -24,7 +24,7 @@ module.exports = {
         "Bots",
         guild.members.cache.filter((m) => m.user.bot).size.toString()
       )
-      .setColor(message.color)
+      .setColor(client.config.color)
       .setFooter({
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),

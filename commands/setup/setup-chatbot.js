@@ -67,7 +67,7 @@ module.exports = {
         );
 
       let MenuEmbed = new MessageEmbed()
-        .setColor(message.color)
+        .setColor(client.config.color)
         .setAuthor({
           name: "Chatbot",
           iconURL:
@@ -131,7 +131,7 @@ module.exports = {
               embeds: [
                 new MessageEmbed()
                   .setTitle("What channel do you want to use?")
-                  .setColor(message.color)
+                  .setColor(client.config.color)
                   .setDescription(
                     "*Just ping the channel with #channel in this channel!*"
                   )
@@ -170,7 +170,7 @@ module.exports = {
                         .setDescription(
                           `You can now chat with me in <#${channel.id}>.`
                         )
-                        .setColor("#fffb00")
+                        .setColor(client.config.color)
                         .setFooter({
                           text: client.user.username,
                           iconURL: client.user.displayAvatarURL({
@@ -193,7 +193,7 @@ module.exports = {
               embeds: [
                 new MessageEmbed()
                   .setTitle("<:Cross:873399628500987945> Chatbot disabled!")
-                  .setColor(message.color)
+                  .setColor(client.config.color)
                   .setDescription(`I will not respond to messages anymore.`)
                   .setFooter({
                     text: client.user.username,
@@ -211,7 +211,7 @@ module.exports = {
               embeds: [
                 new MessageEmbed()
                   .setTitle("📑 Chatbot Settings")
-                  .setColor(message.color)
+                  .setColor(client.config.color)
                   .setDescription(
                     `**Channel:** ${
                       thesettings == "no"

@@ -20,7 +20,7 @@ module.exports = {
                 .replace("webp", "png")})`
             )
             .setImage(message.guild.iconURL({ dynamic: true, size: 4096 }))
-            .setColor(message.color)
+            .setColor(client.config.color)
             .setFooter({
               text: client.user.username,
               iconURL: client.user.displayAvatarURL({ dynamic: true }),
@@ -34,7 +34,7 @@ module.exports = {
           new MessageEmbed()
             .setTitle("Uh oh!")
             .setDescription("This server doesn't have an icon.")
-            .setColor(message.color)
+            .setColor(client.config.color)
             .setFooter({
               text: client.user.username,
               iconURL: client.user.displayAvatarURL({ dynamic: true }),

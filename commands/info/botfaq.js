@@ -24,7 +24,7 @@ module.exports = {
       .setDescription(
         "***Select what you what you want to know using the `dropdown menu` below!***"
       )
-      .setColor(message.color);
+      .setColor(client.config.color);
 
     const row = new MessageActionRow().addComponents(
       new MessageSelectMenu()

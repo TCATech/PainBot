@@ -83,7 +83,7 @@ module.exports = {
         .join("\n");
       const embed = new MessageEmbed()
         .setTitle(`📑 **Queue of ${guild.name}**`)
-        .setColor("#fffb00")
+        .setColor(client.config.color)
         .setDescription(`${info}`)
         .setFooter({
           text: `\n${theSongs.length - 1} songs in the queue | Duration: ${

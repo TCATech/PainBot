@@ -74,7 +74,7 @@ module.exports = {
       )
       .addField("Total Boosts", guild.premiumSubscriptionCount.toString(), true)
       .addField("Boost Tier", boostTier[guild.premiumTier], true)
-      .setColor(message.color)
+      .setColor(client.config.color)
       .setFooter({
         text: client.user.username,
         iconURL: client.user.displayAvatarURL(),

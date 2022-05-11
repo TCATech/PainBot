@@ -21,7 +21,7 @@ module.exports = {
       .setURL(
         `https://discordapp.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=1075214&scope=bot`
       )
-      .setColor(message.color)
+      .setColor(client.config.color)
       .setFooter({
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),

@@ -18,7 +18,7 @@ module.exports = {
       embed: {
         title: "Chaos Words",
         description: `${message.author} has **{{time}}** to find the hidden words in the sentence below.`,
-        color: message.color,
+        color: client.config.color,
         field1: "Sentence:",
         field2: "Words Found/Remaining Words:",
         field3: "Words found:",

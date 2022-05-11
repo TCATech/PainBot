@@ -21,7 +21,7 @@ module.exports = new Command({
         text: client.user.username,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
       })
-      .setColor(message.color)
+      .setColor(client.config.color)
       .setTimestamp();
     interaction.editReply({
       content: "\u200B",

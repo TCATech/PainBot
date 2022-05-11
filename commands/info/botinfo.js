@@ -49,7 +49,7 @@ module.exports = {
         true
       )
       .addField("Developer", "Not TCA#3060", true)
-      .setColor(message.color);
+      .setColor(client.config.color);
 
     message.reply({
       embeds: [embed],

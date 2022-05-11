@@ -77,7 +77,7 @@ module.exports = {
         `[${newTrack.uploader.name}](${newTrack.uploader.url})`
       )
       .addField("🔁 Queue Length", newQueue.songs.length.toString())
-      .setColor(message.color)
+      .setColor(client.config.color)
       .setFooter({
         text: `Requested by: ${newTrack.user.tag}`,
         iconURL: newTrack.user.displayAvatarURL({ dynamic: true }),
