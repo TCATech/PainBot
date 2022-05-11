@@ -41,11 +41,10 @@ module.exports = async (client) => {
   client.on("ready", async () => {
     const guild = client.guilds.cache.get(client.config.guild);
     if (guild) {
-      console.log("Guild found, loading slash commands for it...");
+      // console.log("Guild found, loading slash commands for it...");
       await guild.commands.set(arrayOfSlashCommands);
-      console.log("Done!");
+      // console.log("Done!");
     } else {
-      console.log("Guild not found, skipping slash commands...");
       // console.log("Guild not found, loading slash commands globally...");
       // await client.application.commands.set(arrayOfSlashCommands);
       // console.log("Done! Slash commands will show up in an hour or so.");
