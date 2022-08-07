@@ -1,3 +1,9 @@
-# PainBot v3
+# PainBot v4
 
-The newest version of PainBot, which is currently being worked on.
+The newest (and probably the cleanest) version of PainBot that is currently working on.
+
+### New features
+
+- Slash commands
+- Cleaner embeds
+- And more!
