@@ -47,10 +47,8 @@ module.exports = async (client, message) => {
       return message.channel.send({
         embeds: [
           new EmbedBuilder()
-            .setTitle(
-              "❌ ERROR | You do not have permission to use this command!"
-            )
-            .setColor(client.config.color),
+            .setTitle("❌ You do not have permission to use this command!")
+            .setColor("Red"),
         ],
       });
 
@@ -60,9 +58,9 @@ module.exports = async (client, message) => {
     message.channel.send({
       embeds: [
         new EmbedBuilder()
-          .setTitle("❌ ERROR | An error occurred!")
+          .setTitle("❌ An error occurred!")
           .setDescription(`\`\`\`${err}\`\`\``)
-          .setColor(client.config.color),
+          .setColor("Red"),
       ],
     });
   }

@@ -155,7 +155,7 @@ module.exports = {
                   return menumsg.edit({
                     embeds: [
                       new EmbedBuilder()
-                        .setTitle("❌ ERROR | A channel was not pinged.")
+                        .setTitle("❌ A channel was not pinged.")
                         .setColor("Red"),
                     ],
                   });

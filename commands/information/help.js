@@ -15,7 +15,7 @@ module.exports = {
         return message.channel.send({
           embeds: [
             new EmbedBuilder()
-              .setTitle("❌ ERROR | Command not found")
+              .setTitle("❌ Command not found.")
               .setColor(client.config.color),
           ],
         });
