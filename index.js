@@ -21,7 +21,7 @@ client.settings = new Enmap({
   dataDir: "./databases/settings",
 });
 
-Array("commands", "events").forEach((handler) => {
+Array("commands", "events", "features").forEach((handler) => {
   require(`./handlers/${handler}`)(client);
 });
 
