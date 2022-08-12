@@ -12,7 +12,16 @@ const client = new Discord.Client({
   partials: ["MESSAGE", "CHANNEL", "REACTION"],
 });
 
-Array("events").forEach((handler) => {
+client.config = require("./config.json");
+
+client.commands = new Discord.Collection();
+
+client.settings = new Enmap({
+  name: "settings",
+  dataDir: "./databases/settings",
+});
+
+Array("commands", "events").forEach((handler) => {
   require(`./handlers/${handler}`)(client);
 });
 
