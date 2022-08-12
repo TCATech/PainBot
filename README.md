@@ -1,3 +1,3 @@
-# PainBot v3
+# PainBot
 
-The newest version of PainBot, which is currently being worked on.
+Note to self: make this better later
