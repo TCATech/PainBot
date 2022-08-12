@@ -98,7 +98,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
           .setColor(client.config.color)
-          .setTitle("HELP MENU 🔰")
+          .setTitle(`HELP MENU 🔰 (Page ${i + 1}/${categories.length})`)
           .setDescription(
             `To see more information for a specific command, type: \`${message.prefix}help [command]\`.`
           )
@@ -111,7 +111,7 @@ module.exports = {
       }
 
       const prev = new ButtonBuilder()
-        .setCustomId("previous")
+        .setCustomId("prev")
         .setEmoji("994438542077984768")
         .setStyle(2);
       const next = new ButtonBuilder()
@@ -121,48 +121,51 @@ module.exports = {
 
       let cur = 0;
 
-      await message.channel.send({
+      const getRow = () => {
+        const row = new ActionRowBuilder().addComponents(
+          new ButtonBuilder()
+            .setCustomId("prev")
+            .setStyle(2)
+            .setEmoji("994438542077984768")
+            .setDisabled(cur === 0),
+          new ButtonBuilder()
+            .setCustomId("next")
+            .setStyle(2)
+            .setEmoji("994438540429643806")
+            .setDisabled(cur === embeds.length - 1)
+        );
+
+        return row;
+      };
+
+      const res = await message.channel.send({
         embeds: [embeds[0]],
         components: [new ActionRowBuilder().addComponents(prev, next)],
       });
 
-      const filter = (i) => i.user.id === message.author.id;
-
+      const filter = (i) =>
+        i.user.id === message.member.id && i.message.id === res.id;
       const collector = message.channel.createMessageComponentCollector({
         filter,
-        componentType: 2,
       });
 
       collector.on("collect", (i) => {
-        if (i.customId === "previous") {
-          if (cur !== 0) {
-            cur -= 1;
-            i.update({
-              embeds: [embeds[cur]],
-            });
-          } else if (cur > embeds.length) {
-            cur = 0;
-            i.update({
-              embeds: [embeds[cur]],
-            });
-          } else {
-            cur = embeds.length - 1;
-            i.update({
-              embeds: [embeds[cur]],
-            });
-          }
-        } else if (i.customId === "next") {
-          if (cur < embeds.length - 1) {
-            cur += 1;
-            i.update({
-              embeds: [embeds[cur]],
-            });
-          } else {
-            cur = 0;
-            i.update({
-              embeds: [embeds[cur]],
-            });
-          }
+        if (!i) return;
+
+        if (i.customId !== "prev" && i.customId !== "next") return;
+
+        if (i.customId === "prev" && cur > 0) {
+          cur -= 1;
+          i.update({
+            embeds: [embeds[cur]],
+            components: [getRow()],
+          });
+        } else if (i.customId === "next" && cur < embeds.length - 1) {
+          cur += 1;
+          i.update({
+            embeds: [embeds[cur]],
+            components: [getRow()],
+          });
         }
       });
     }
