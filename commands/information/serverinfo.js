@@ -95,7 +95,7 @@ module.exports = {
         }
       )
       .setColor(client.config.color);
-    message.reply({
+    message.channel.send({
       embeds: [embed],
     });
   },
