@@ -14,9 +14,6 @@ module.exports = {
     const member =
       message.mentions.members.first() ||
       message.guild.members.cache.get(args[0]) ||
-      message.guild.members.cache.find(
-        (m) => m.user.username === args.join(" ")
-      ) ||
       message.member;
     const avatar = member.user.displayAvatarURL({ dynamic: true, size: 4096 });
     const embed = new EmbedBuilder()
