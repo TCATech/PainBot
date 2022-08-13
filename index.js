@@ -3,7 +3,7 @@ const Enmap = require("enmap");
 require("dotenv/config");
 
 const client = new Discord.Client({
-  intents: ["Guilds", "GuildMessages", "MessageContent"],
+  intents: ["Guilds", "GuildMembers", "GuildMessages", "MessageContent"],
   allowedMentions: {
     parse: [],
     repliedUser: false,
