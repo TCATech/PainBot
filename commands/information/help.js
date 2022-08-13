@@ -1,4 +1,5 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
+const { getRow } = require("../../utils/functions");
 
 module.exports = {
   name: "help",
@@ -110,37 +111,11 @@ module.exports = {
         embeds.push(embed);
       }
 
-      const prev = new ButtonBuilder()
-        .setCustomId("prev")
-        .setEmoji("994438542077984768")
-        .setStyle(2);
-      const next = new ButtonBuilder()
-        .setCustomId("next")
-        .setEmoji("994438540429643806")
-        .setStyle(2);
-
       let cur = 0;
-
-      const getRow = () => {
-        const row = new ActionRowBuilder().addComponents(
-          new ButtonBuilder()
-            .setCustomId("prev")
-            .setStyle(2)
-            .setEmoji("994438542077984768")
-            .setDisabled(cur === 0),
-          new ButtonBuilder()
-            .setCustomId("next")
-            .setStyle(2)
-            .setEmoji("994438540429643806")
-            .setDisabled(cur === embeds.length - 1)
-        );
-
-        return row;
-      };
 
       const res = await message.channel.send({
         embeds: [embeds[0]],
-        components: [new ActionRowBuilder().addComponents(prev, next)],
+        components: [getRow(cur, embeds)],
       });
 
       const filter = (i) =>
@@ -158,13 +133,13 @@ module.exports = {
           cur -= 1;
           i.update({
             embeds: [embeds[cur]],
-            components: [getRow()],
+            components: [getRow(cur, embeds)],
           });
         } else if (i.customId === "next" && cur < embeds.length - 1) {
           cur += 1;
           i.update({
             embeds: [embeds[cur]],
-            components: [getRow()],
+            components: [getRow(cur, embeds)],
           });
         }
       });
