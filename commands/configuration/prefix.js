@@ -19,13 +19,13 @@ module.exports = {
    */
   run: async (client, message, args) => {
     if (!args[0])
-      return message.channel.send({
+      return message.reply({
         embeds: [
           new EmbedBuilder().setTitle(`❌ No prefix provided.`).setColor("Red"),
         ],
       });
     if (args[0].length > 5)
-      return message.channel.send({
+      return message.reply({
         embeds: [
           new EmbedBuilder()
             .setTitle(`❌ Prefix has to be less than 5 characters long.`)
@@ -35,7 +35,7 @@ module.exports = {
 
     client.settings.set(message.guild.id, args[0], "prefix");
 
-    message.channel.send({
+    message.reply({
       embeds: [
         new EmbedBuilder()
           .setTitle(`✅ The prefix in this server is now \`${args[0]}\`.`)

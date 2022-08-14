@@ -47,7 +47,7 @@ module.exports = {
 
     let cur = 0;
 
-    const res = await message.channel.send({
+    const res = await message.reply({
       embeds: [embeds[0]],
       components: [getRow(cur, embeds)],
     });

@@ -70,7 +70,7 @@ module.exports = {
       )
       .setColor(client.config.color);
 
-    message.channel.send({
+    message.reply({
       embeds: [embed],
       components: [
         new ActionRowBuilder().addComponents(

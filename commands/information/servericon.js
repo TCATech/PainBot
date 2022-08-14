@@ -5,7 +5,7 @@ module.exports = {
   description: "Gets the avatar of the server.",
   run: async (client, message, args) => {
     if (message.guild.icon) {
-      message.channel.send({
+      message.reply({
         embeds: [
           new EmbedBuilder()
             .setTitle(`${message.guild.name}'s Icon`)

@@ -13,7 +13,7 @@ module.exports = {
         );
 
       if (!command || command.directory === "owner") {
-        return message.channel.send({
+        return message.reply({
           embeds: [
             new EmbedBuilder()
               .setTitle("❌ Command not found.")
@@ -80,7 +80,7 @@ module.exports = {
         });
       }
 
-      message.channel.send({
+      message.reply({
         embeds: [embed],
       });
     } else {
@@ -113,7 +113,7 @@ module.exports = {
 
       let cur = 0;
 
-      const res = await message.channel.send({
+      const res = await message.reply({
         embeds: [embeds[0]],
         components: [getRow(cur, embeds)],
       });

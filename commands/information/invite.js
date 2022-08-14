@@ -29,7 +29,7 @@ module.exports = {
         )
     );
 
-    message.channel.send({
+    message.reply({
       embeds: [embed],
       components: [row],
     });

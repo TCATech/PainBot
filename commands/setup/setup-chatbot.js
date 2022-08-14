@@ -76,7 +76,7 @@ module.exports = {
         .setDescription(
           "***Select what you what you want to do using the `dropdown menu` below!***"
         );
-      const menumsg = await message.channel.send({
+      const menumsg = await message.reply({
         embeds: [MenuEmbed],
         components: [new ActionRowBuilder().addComponents(Menu)],
       });

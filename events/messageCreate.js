@@ -24,7 +24,7 @@ module.exports = async (client, message) => {
     .split(/ +/);
 
   if (cmd.length === 0 && mPrefix.includes(client.user.id)) {
-    return message.channel.send({
+    return message.reply({
       embeds: [
         new EmbedBuilder()
           .setTitle("👋 Hey there!")
@@ -44,7 +44,7 @@ module.exports = async (client, message) => {
 
   try {
     if (command.userPerms && !message.member.permissions.has(command.userPerms))
-      return message.channel.send({
+      return message.reply({
         embeds: [
           new EmbedBuilder()
             .setTitle("❌ You do not have permission to use this command!")
@@ -55,7 +55,7 @@ module.exports = async (client, message) => {
     await command.run(client, message, args);
   } catch (err) {
     console.log(err);
-    message.channel.send({
+    message.reply({
       embeds: [
         new EmbedBuilder()
           .setTitle("❌ An error occurred!")
