@@ -9,8 +9,8 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    message.channel
-      .send({
+    message
+      .reply({
         embeds: [
           new EmbedBuilder()
             .setTitle("Pinging...")
