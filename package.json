@@ -23,6 +23,9 @@
   },
   "dependencies": {
     "@discordjs/rest": "^1.0.1",
+    "@nottca/weky": "^4.0.4",
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
     "cpu-stat": "^2.0.1",
     "discord-api-types": "^0.37.2",
     "discord-chatbot": "^2.1.0",

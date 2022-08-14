@@ -35,4 +35,17 @@ module.exports = {
 
     return row;
   },
+  /**
+   *
+   * @param {String[]} words
+   * @param {number} length
+   * @returns {string}
+   */
+  getRandomWord: function (words, length) {
+    const word = [];
+    for (let i = 0; i < length; i++) {
+      word.push(words[Math.floor(Math.random() * words.length)]);
+    }
+    return word;
+  },
 };
