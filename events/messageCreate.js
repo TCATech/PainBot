@@ -40,7 +40,17 @@ module.exports = async (client, message) => {
     client.commands.get(cmd.toLowerCase()) ||
     client.commands.find((c) => c.aliases?.includes(cmd.toLowerCase()));
 
-  if (!command) return;
+  if (!command)
+    return message.reply({
+      embeds: [
+        new EmbedBuilder()
+          .setTitle("❌ Unknown command.")
+          .setDescription(
+            `Use \`${message.prefix}help\` to see all my commands.`
+          )
+          .setColor("Red"),
+      ],
+    });
 
   try {
     if (command.userPerms && !message.member.permissions.has(command.userPerms))
