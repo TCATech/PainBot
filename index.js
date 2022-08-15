@@ -10,6 +10,14 @@ const client = new Discord.Client({
   },
   rest: { offset: 0 },
   partials: ["MESSAGE", "CHANNEL", "REACTION"],
+  presence: {
+    activities: [
+      {
+        name: ">help | painbot.tk",
+        type: Discord.ActivityType.Watching,
+      },
+    ],
+  },
 });
 
 client.config = require("./config.json");
