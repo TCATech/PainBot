@@ -14,7 +14,7 @@ module.exports = {
       message.mentions.members.first() ||
       message.guild.members.cache.get(args[0]);
     if (!user)
-      return message.channel.send({
+      return message.reply({
         embeds: [
           new EmbedBuilder()
             .setTitle("❌ You need to mention a member.")
@@ -22,7 +22,7 @@ module.exports = {
         ],
       });
     if (user.roles.highest.position >= message.member.roles.highest.position)
-      return message.channel.send({
+      return message.reply({
         embeds: [
           new EmbedBuilder()
             .setTitle(
@@ -32,7 +32,7 @@ module.exports = {
         ],
       });
     if (!user.moderatable)
-      return message.channel.send({
+      return message.reply({
         embeds: [
           new EmbedBuilder()
             .setTitle("❌ I cannot unmute that member.")
@@ -43,7 +43,7 @@ module.exports = {
     const reason = args.slice(1).join(" ") || "No reason specified.";
 
     user.timeout(null, reason);
-    message.channel.send({
+    message.reply({
       embeds: [
         new EmbedBuilder()
           .setTitle("✅ Success!")
