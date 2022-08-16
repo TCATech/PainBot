@@ -1,21 +1,19 @@
-const { Client, Message, EmbedBuilder, version } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, version } = require("discord.js");
 let cpuStat = require("cpu-stat");
 
 module.exports = {
-  name: "stats",
-  description: "Shows some statistics about the bot.",
-  /**
-   * @param {Client} client
-   * @param {Message} message
-   * @param {String[]} args
-   */
-  run: async (client, message, args) => {
-    const res = await message.reply({
+  data: new SlashCommandBuilder()
+    .setName("stats")
+    .setDescription("Shows some statistics about the bot."),
+  run: async (client, interaction) => {
+    await interaction.reply({
       embeds: [
         new EmbedBuilder()
           .setTitle("Getting information...")
           .setColor(client.config.color),
       ],
+      ephemeral: true,
+      fetchReply: true,
     });
     cpuStat.usagePercent(function (e, percent, seconds) {
       if (e) {
@@ -76,7 +74,7 @@ RAM Usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}% / ${(
         )
         .setColor(client.config.color);
 
-      res.edit({
+      interaction.editReply({
         embeds: [embed],
       });
     });

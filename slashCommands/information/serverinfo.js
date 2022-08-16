@@ -1,4 +1,4 @@
-const { Client, Message, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const boostTier = {
   0: "None",
   1: "Tier 1",
@@ -7,16 +7,12 @@ const boostTier = {
 };
 
 module.exports = {
-  name: "serverinfo",
-  description: "Get some info about the server.",
-  /**
-   * @param {Client} client
-   * @param {Message} message
-   * @param {String[]} args
-   */
-  run: async (client, message, args) => {
-    const { guild } = message;
-    guild.owner = await message.guild
+  data: new SlashCommandBuilder()
+    .setName("serverinfo")
+    .setDescription("Get some info about the server."),
+  run: async (client, interaction) => {
+    const { guild } = interaction;
+    guild.owner = await interaction.guild
       .fetchOwner()
       .then((m) => m.user)
       .catch(() => {});
@@ -97,8 +93,9 @@ module.exports = {
         }
       )
       .setColor(client.config.color);
-    message.reply({
+    interaction.reply({
       embeds: [embed],
+      ephemeral: true,
     });
   },
 };
