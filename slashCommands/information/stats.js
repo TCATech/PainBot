@@ -13,7 +13,6 @@ module.exports = {
           .setColor(client.config.color),
       ],
       ephemeral: true,
-      fetchReply: true,
     });
     cpuStat.usagePercent(function (e, percent, seconds) {
       if (e) {
