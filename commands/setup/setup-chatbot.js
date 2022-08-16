@@ -96,8 +96,12 @@ module.exports = {
           );
           if (menu?.values[0] == "Cancel")
             return menu.message.edit({
-              content: "❌ Cancelled.",
-              embeds: [],
+              embeds: [
+                new EmbedBuilder()
+                  .setTitle(`✅ Success!`)
+                  .setDescription(`The chatbot setup has been cancelled.`)
+                  .setColor(client.config.color),
+              ],
               components: [],
             });
           menu?.deferUpdate();
@@ -144,9 +148,9 @@ module.exports = {
                   return menumsg.edit({
                     embeds: [
                       new EmbedBuilder()
-                        .setTitle(`✅ The chatbot system is now enabled!`)
+                        .setTitle(`✅ Success!`)
                         .setDescription(
-                          `You can now chat with me in <#${channel.id}>.`
+                          `The chatbot system is now enabled!\n>>> You can now chat with me in <#${channel.id}>.`
                         )
                         .setColor(client.config.color),
                     ],
@@ -168,7 +172,8 @@ module.exports = {
           return menumsg.edit({
             embeds: [
               new EmbedBuilder()
-                .setTitle(`✅ The chatbot system is now disabled!`)
+                .setTitle(`✅ Success!`)
+                .setDescription(`The chatbot system is now disabled.`)
                 .setColor(client.config.color),
             ],
             components: [],
