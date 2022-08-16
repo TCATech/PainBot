@@ -29,13 +29,14 @@ const client = new Discord.Client({
 client.config = require("./config.json");
 
 client.commands = new Discord.Collection();
+client.slashCommands = new Discord.Collection();
 
 client.settings = new Enmap({
   name: "settings",
   dataDir: "./databases/settings",
 });
 
-Array("commands", "events", "features").forEach((handler) => {
+Array("commands", "slashCommands", "events", "features").forEach((handler) => {
   require(`./handlers/${handler}`)(client);
 });
 
