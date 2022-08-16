@@ -43,7 +43,11 @@ module.exports = {
       });
     if (!member.moderatable)
       return message.reply({
-        content: "❌ I am unable to mute that user.",
+        embeds: [
+          new EmbedBuilder()
+            .setTitle("❌ I cannot mute that member.")
+            .setColor("Red"),
+        ],
       });
     if (member.isCommunicationDisabled())
       return message.reply({
@@ -71,7 +75,7 @@ module.exports = {
           .setTitle("✅ Success!")
           .setDescription(
             `**${
-              member.user.tag
+              user.user.tag
             }** is now muted from the server!\n>>> **Time:** ${ms(ms(time), {
               long: true,
             })}\n**Reason:** ${reason}`

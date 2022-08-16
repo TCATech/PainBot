@@ -9,7 +9,7 @@ module.exports = {
     const { channel } = message;
 
     if (!args[0])
-      return message.channel.send({
+      return message.reply({
         embeds: [
           new EmbedBuilder()
             .setTitle("❌ You need to specify the new slowmode.")
@@ -18,7 +18,7 @@ module.exports = {
       });
 
     if (ms(args[0]) > ms("6h"))
-      return message.channel.send({
+      return message.reply({
         embeds: [
           new EmbedBuilder()
             .setTitle("❌ Slowmode can't be set to more than 6 hours.")

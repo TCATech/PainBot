@@ -39,6 +39,14 @@ module.exports = {
             .setColor("Red"),
         ],
       });
+    if (!user.isCommunicationDisabled())
+      return message.reply({
+        embeds: [
+          new EmbedBuilder()
+            .setTitle("❌ That member is not muted.")
+            .setColor("Red"),
+        ],
+      });
 
     const reason = args.slice(1).join(" ") || "No reason specified.";
 
