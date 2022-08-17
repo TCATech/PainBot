@@ -1,10 +1,10 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
 const ms = require("ms");
 
 module.exports = {
   name: "slowmode",
   description: "Changes the slowmode of the current channel.",
-  userPerms: ["MANAGE_CHANNELS"],
+  userPerms: [PermissionFlagsBits.ManageChannels],
   run: async (client, message, args) => {
     const { channel } = message;
 

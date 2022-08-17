@@ -1,9 +1,14 @@
-const { Client, Message, EmbedBuilder } = require("discord.js");
+const {
+  Client,
+  Message,
+  EmbedBuilder,
+  PermissionFlagsBits,
+} = require("discord.js");
 
 module.exports = {
   name: "unmute",
   description: "Unmutes a member from the server, preventing them from typing.",
-  userPerms: ["MODERATE_MEMBERS"],
+  userPerms: [PermissionFlagsBits.ModerateMembers],
   /**
    * @param {Client} client
    * @param {Message} message
