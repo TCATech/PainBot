@@ -1,5 +1,8 @@
 const Chat = require("discord-chatbot");
-const chatbot = new Chat();
+const chatbot = new Chat({
+  name: "PainBot",
+  gender: "male",
+});
 
 module.exports = (client) => {
   client.on("messageCreate", async (message) => {
