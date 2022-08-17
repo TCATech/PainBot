@@ -12,6 +12,7 @@ module.exports = {
     "setupprefix",
   ],
   usage: "<new prefix>",
+  userPerms: ["ManageGuild"],
   /**
    * @param {Client} client
    * @param {Message} message
@@ -21,7 +22,9 @@ module.exports = {
     if (!args[0])
       return message.reply({
         embeds: [
-          new EmbedBuilder().setTitle(`❌ No prefix provided.`).setColor("Red"),
+          new EmbedBuilder()
+            .setTitle(`❌ You need to provide a prefix.`)
+            .setColor("Red"),
         ],
       });
     if (args[0].length > 5)
