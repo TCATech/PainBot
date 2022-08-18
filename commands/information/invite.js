@@ -28,10 +28,17 @@ module.exports = {
           `https://discordapp.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=1075214&scope=bot%20applications.commands`
         )
     );
+    const row2 = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setEmoji("❓")
+        .setStyle(5)
+        .setLabel("Support Server")
+        .setURL("https://discord.gg/5FxTT5WRgt")
+    );
 
     message.reply({
       embeds: [embed],
-      components: [row],
+      components: [row, row2],
     });
   },
 };

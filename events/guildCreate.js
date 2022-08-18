@@ -29,6 +29,7 @@ module.exports = async (client, guild) => {
         > My default prefix is \`>\`
         > You can find all my commands by typing \`>help\`
         > You can change my prefix by typing \`>prefix <new prefix>\`
+        > If you're having trouble with the bot, you can join the support server by [clicking here.](https://discord.gg/5FxTT5WRgt)
         `
         )
         .setColor(client.config.color),
