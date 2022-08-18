@@ -4,6 +4,7 @@ module.exports = {
   name: "addrole",
   description: "Adds a role to a member.",
   userPerms: [PermissionFlagsBits.ManageRoles],
+  usage: "<member> <role to add>",
   run: async (client, message, args) => {
     const member =
       message.mentions.members.first() ||

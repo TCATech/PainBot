@@ -5,7 +5,7 @@ module.exports = {
   name: "mute",
   description: "Mutes a member from the server.",
   aliases: ["m", "timeout", "to", "t"],
-  usage: "<user> [reason]",
+  usage: "<member> <time> [reason]",
   userPerms: [PermissionFlagsBits.ModerateMembers],
   run: async (client, message, args) => {
     const member =

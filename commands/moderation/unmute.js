@@ -7,8 +7,9 @@ const {
 
 module.exports = {
   name: "unmute",
-  description: "Unmutes a member from the server, preventing them from typing.",
+  description: "Unmutes a member from the server.",
   userPerms: [PermissionFlagsBits.ModerateMembers],
+  usage: "<member> [reason]",
   /**
    * @param {Client} client
    * @param {Message} message

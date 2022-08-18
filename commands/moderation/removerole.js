@@ -4,6 +4,7 @@ module.exports = {
   name: "removerole",
   description: "Removes a role from a member.",
   userPerms: [PermissionFlagsBits.ManageRoles],
+  usage: "<member> <role to remove>",
   run: async (client, message, args) => {
     const member =
       message.mentions.members.first() ||

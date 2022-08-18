@@ -4,6 +4,7 @@ module.exports = {
   name: "unban",
   description: "Unbans a member from the server.",
   userPerms: [PermissionFlagsBits.BanMembers],
+  usage: "<member ID>",
   /**
    * @param {Client} client
    * @param {Message} message

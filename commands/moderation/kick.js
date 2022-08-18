@@ -4,7 +4,7 @@ module.exports = {
   name: "kick",
   description: "Kicks a member from the server.",
   aliases: ["k"],
-  usage: "<user> [reason]",
+  usage: "<member> [reason]",
   userPerms: [PermissionFlagsBits.KickMembers],
   run: async (client, message, args) => {
     const member =

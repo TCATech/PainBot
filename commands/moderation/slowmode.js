@@ -5,6 +5,7 @@ module.exports = {
   name: "slowmode",
   description: "Changes the slowmode of the current channel.",
   userPerms: [PermissionFlagsBits.ManageChannels],
+  usage: "<time>",
   run: async (client, message, args) => {
     const { channel } = message;
 

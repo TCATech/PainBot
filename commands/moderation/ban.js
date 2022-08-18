@@ -4,7 +4,7 @@ module.exports = {
   name: "ban",
   description: "Bans a member from the server.",
   aliases: ["b"],
-  usage: "<user> [reason]",
+  usage: "<member> [reason]",
   userPerms: [PermissionFlagsBits.BanMembers],
   run: async (client, message, args) => {
     const member =
