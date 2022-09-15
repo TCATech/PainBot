@@ -1,5 +1,7 @@
 module.exports = (client) => {
   client.on("messageDelete", (message) => {
+    if (message.author.bot || !message.guild) return;
+
     let snipes = client.snipes.get(message.channel.id) || [];
     if (snipes.length > 1) snipes = snipes.shift();
 
