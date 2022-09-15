@@ -30,6 +30,7 @@ client.config = require("./config.json");
 
 client.commands = new Discord.Collection();
 client.slashCommands = new Discord.Collection();
+client.snipes = new Discord.Collection();
 
 client.settings = new Enmap({
   name: "settings",
