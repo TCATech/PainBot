@@ -5,6 +5,7 @@ const {
   ButtonBuilder,
   EmbedBuilder,
 } = require("discord.js");
+const { version } = require("../../package.json");
 
 module.exports = {
   name: "botinfo",
@@ -54,7 +55,7 @@ module.exports = {
         },
         {
           name: "Version",
-          value: process.env.npm_package_version,
+          value: version,
           inline: true,
         },
         {
