@@ -4,6 +4,7 @@ module.exports = {
   name: "nick",
   description: "Change the nickname of a member.",
   aliases: ["nickname"],
+  usage: "<member> [new nickname]",
   userPerms: [PermissionFlagsBits.ManageNicknames],
   run: async (client, message, args) => {
     const member =
