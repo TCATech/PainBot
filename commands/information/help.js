@@ -56,7 +56,7 @@ module.exports = {
         });
 
       if (command.usage) {
-        embed.addFieldss({
+        embed.addFields({
           name: "Usage",
           value: `\`\`\`${message.prefix}${command.name} ${command.usage}\`\`\``,
         });
