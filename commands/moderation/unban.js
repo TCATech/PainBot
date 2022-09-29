@@ -1,9 +1,9 @@
-const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "unban",
   description: "Unbans a member from the server.",
-  userPerms: [PermissionFlagsBits.BanMembers],
+  userPerms: ["BanMembers"],
   usage: "<member ID>",
   /**
    * @param {Client} client

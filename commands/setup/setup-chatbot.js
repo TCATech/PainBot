@@ -4,7 +4,6 @@ const {
   EmbedBuilder,
   ActionRowBuilder,
   SelectMenuBuilder,
-  PermissionFlagsBits,
 } = require("discord.js");
 
 module.exports = {
@@ -19,7 +18,7 @@ module.exports = {
     "aichat-setup",
     "aichatsetup",
   ],
-  userPerms: [PermissionFlagsBits.ManageGuild],
+  userPerms: ["ManageGuild"],
   /**
    * @param {Client} client
    * @param {Message} message

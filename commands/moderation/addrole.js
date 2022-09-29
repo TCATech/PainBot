@@ -1,9 +1,9 @@
-const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "addrole",
   description: "Adds a role to a member.",
-  userPerms: [PermissionFlagsBits.ManageRoles],
+  userPerms: ["ManageRoles"],
   usage: "<member> <role to add>",
   run: async (client, message, args) => {
     const member =

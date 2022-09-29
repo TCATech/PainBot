@@ -1,20 +1,10 @@
-const {
-  Client,
-  Message,
-  EmbedBuilder,
-  PermissionFlagsBits,
-} = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "unmute",
   description: "Unmutes a member from the server.",
-  userPerms: [PermissionFlagsBits.ModerateMembers],
+  userPerms: ["ModerateMembers"],
   usage: "<member> [reason]",
-  /**
-   * @param {Client} client
-   * @param {Message} message
-   * @param {String[]} args
-   */
   run: async (client, message, args) => {
     const user =
       message.mentions.members.first() ||

@@ -1,11 +1,11 @@
-const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "ban",
   description: "Bans a member from the server.",
   aliases: ["b"],
   usage: "<member> [reason]",
-  userPerms: [PermissionFlagsBits.BanMembers],
+  userPerms: ["BanMembers"],
   run: async (client, message, args) => {
     const member =
       message.mentions.members.first() ||

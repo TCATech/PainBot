@@ -28,7 +28,7 @@ module.exports = {
         embed.setTitle(`Information about \`${command.name}\``);
         embed.addFields({
           name: "Command",
-          value: "```" + client.config.prefix + command.name + "```",
+          value: "```" + message.prefix + command.name + "```",
         });
       }
 
@@ -46,22 +46,7 @@ module.exports = {
       if (command.userPerms)
         embed.addFields({
           name: "Permissions",
-          value:
-            "```" +
-            command.userPerms
-              .map(
-                (value) =>
-                  `${
-                    value[0].toUpperCase() +
-                    value
-                      .toLowerCase()
-                      .slice(1)
-                      .replace(/_/gi, " ")
-                      .replace("guild", "server")
-                  }`
-              )
-              .join(", ") +
-            "```",
+          value: "```" + command.userPerms.join(", ") + "```",
         });
 
       if (command.aliases)

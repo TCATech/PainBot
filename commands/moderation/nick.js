@@ -1,11 +1,11 @@
-const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "nick",
   description: "Change the nickname of a member.",
   aliases: ["nickname"],
   usage: "<member> [new nickname]",
-  userPerms: [PermissionFlagsBits.ManageNicknames],
+  userPerms: ["ManageNicknames"],
   run: async (client, message, args) => {
     const member =
       message.mentions.members.first() ||

@@ -1,4 +1,4 @@
-const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const ms = require("ms");
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
   description: "Mutes a member from the server.",
   aliases: ["m", "timeout", "to", "t"],
   usage: "<member> <time> [reason]",
-  userPerms: [PermissionFlagsBits.ModerateMembers],
+  userPerms: ["ModerateMembers"],
   run: async (client, message, args) => {
     const member =
       message.mentions.members.first() ||

@@ -1,9 +1,9 @@
-const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "removerole",
   description: "Removes a role from a member.",
-  userPerms: [PermissionFlagsBits.ManageRoles],
+  userPerms: ["ManageRoles"],
   usage: "<member> <role to remove>",
   run: async (client, message, args) => {
     const member =

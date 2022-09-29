@@ -1,9 +1,4 @@
-const {
-  Client,
-  Message,
-  EmbedBuilder,
-  PermissionFlagsBits,
-} = require("discord.js");
+const { Client, Message, EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "prefix",
@@ -17,7 +12,7 @@ module.exports = {
     "setupprefix",
   ],
   usage: "<new prefix>",
-  userPerms: [PermissionFlagsBits.ManageGuild],
+  userPerms: ["ManageGuild"],
   /**
    * @param {Client} client
    * @param {Message} message

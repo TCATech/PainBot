@@ -35,7 +35,11 @@ module.exports = {
         embed.setTitle(`Information about \`${command.name}\``);
         embed.addFields({
           name: "Command",
-          value: "```" + client.config.prefix + command.name + "```",
+          value:
+            "```" +
+            client.settings.get(interaction.guild.id, "prefix") +
+            command.name +
+            "```",
         });
       }
 
@@ -53,22 +57,7 @@ module.exports = {
       if (command.userPerms)
         embed.addFields({
           name: "Permissions",
-          value:
-            "```" +
-            command.userPerms
-              .map(
-                (value) =>
-                  `${
-                    value[0].toUpperCase() +
-                    value
-                      .toLowerCase()
-                      .slice(1)
-                      .replace(/_/gi, " ")
-                      .replace("guild", "server")
-                  }`
-              )
-              .join(", ") +
-            "```",
+          value: "```" + command.userPerms.join(", ") + "```",
         });
 
       if (command.aliases)
@@ -78,9 +67,11 @@ module.exports = {
         });
 
       if (command.usage) {
-        embed.addFieldss({
+        embed.addFields({
           name: "Usage",
-          value: `\`\`\`${message.prefix}${command.name} ${command.usage}\`\`\``,
+          value: `\`\`\`${client.settings.get(interaction.guild.id, "prefix")}${
+            command.name
+          } ${command.usage}\`\`\``,
         });
         embed.setFooter({
           text: "<> = required, [] = optional",

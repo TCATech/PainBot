@@ -1,4 +1,4 @@
-const { EmbedBuilder, PermissionFlagsBits } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const ms = require("ms");
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
   description: "Deletes a specific amount of messages from the channel.",
   aliases: ["prune", "clear"],
   usage: "<amount of messages>",
-  userPerms: [PermissionFlagsBits.ManageMessages],
+  userPerms: ["ManageMessages"],
   run: async (client, message, args) => {
     const amount = parseInt(args[0]);
 
