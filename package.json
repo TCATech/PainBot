@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "The official documentation of PainBot.",
   "main": "index.js",
+  "scripts": {
+    "start": "retype run",
+    "dev": "retype watch",
+    "build": "retype build"
+  },
   "repository": "https://github.com/TCATech/PainBot.git",
   "author": "Not TCA <realtcatech@gmail.com>",
   "license": "MIT"
