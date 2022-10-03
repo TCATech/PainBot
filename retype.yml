@@ -5,7 +5,8 @@ branding:
   title: PainBot
   label: v3 Docs
 links:
-  - text: Getting Started
-    link: https://retype.com/guides/getting-started/
+  - text: Home
+    link: /
+    icon: home
 footer:
   copyright: "&copy; TCA Tech {{ year }}. All rights reserved."
