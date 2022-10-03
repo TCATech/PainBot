@@ -4,6 +4,7 @@ url: https://docs.painbot.tk
 branding:
   title: PainBot
   label: v3 Docs
+  logo: assets/logo.png
 links:
   - text: Home
     link: /
