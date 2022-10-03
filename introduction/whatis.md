@@ -1,3 +1,7 @@
+---
+icon: question
+---
+
 # What is PainBot?
 
 PainBot is a multipurpose Discord bot with fun in mind.

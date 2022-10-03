@@ -1,4 +1,5 @@
 ---
+icon: light-bulb
 order: -1
 title: PainBot's features
 ---
